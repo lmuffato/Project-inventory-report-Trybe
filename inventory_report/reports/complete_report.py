@@ -1,6 +1,7 @@
 from .simple_report import SimpleReport
 import collections
 
+
 class CompleteReport(SimpleReport):
     @classmethod
     def generate(self, product_list):
