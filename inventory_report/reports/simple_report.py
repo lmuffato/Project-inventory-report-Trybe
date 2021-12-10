@@ -1,34 +1,35 @@
 from datetime import datetime
 from collections import Counter
+from inventory_report.reports.functions import Functions
 
 
 class SimpleReport:
 
     def generate(path):
-        hoje = datetime.today().strftime('%Y-%m-%d')
-        antigo = ''
-        validade = ''
+        today = datetime.today().strftime('%Y-%m-%d')
+        older = "3000-01-01"
+        validate = "3000-01-01"
         nome = ''
         nomes = []
+        older = Functions.data_de_fabricacao(today, path, older)
+        validate = Functions.data_de_validade(today, path, validate)
         item = iter(path)
         while item:
             try:
                 result = next(item)
+                # valido = result['data_de_validade']
                 nomes.append(result['nome_da_empresa'])
-                if (antigo or validade or nome) == '':
-                    antigo = result['data_de_fabricacao']
-                    validade = result['data_de_validade']
-                    nome = result['nome_da_empresa']
-                if (antigo > result['data_de_fabricacao']):
-                    antigo = result['data_de_fabricacao']
-                if (validade > result['data_de_validade']):
-                    if hoje < result['data_de_validade']:
-                        validade = result['data_de_validade']
+                # if (older > result['data_de_fabricacao']):
+                #     older = result['data_de_fabricacao']
+                # if (validade > valido) and today < valido:
+                #     validade = valido
             except StopIteration:
                 break
         nomes = Counter(nomes)
         nome = nomes.most_common()
         nome = nome[0][0]
-        print("Data de fabricação mais antiga:", antigo)
-        print("Data de validade mais próxima:", validade)
-        print("Empresa com maior quantidade de produtos estocados:", nome)
+        return(
+            f"Data de fabricação mais antiga: {older}\n"
+            f"Data de validade mais próxima: {validate}\n"
+            f"Empresa com maior quantidade de produtos estocados: {nome}\n"
+        )
