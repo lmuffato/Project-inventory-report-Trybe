@@ -17,12 +17,7 @@ class SimpleReport:
         while item:
             try:
                 result = next(item)
-                # valido = result['data_de_validade']
                 nomes.append(result['nome_da_empresa'])
-                # if (older > result['data_de_fabricacao']):
-                #     older = result['data_de_fabricacao']
-                # if (validade > valido) and today < valido:
-                #     validade = valido
             except StopIteration:
                 break
         nomes = Counter(nomes)
