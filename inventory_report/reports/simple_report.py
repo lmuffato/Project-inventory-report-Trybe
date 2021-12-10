@@ -28,3 +28,10 @@ class SimpleReport():
         "Empresa com maior quantidade de produtos estocados:" 
         f" {empresa_maior_quantidade}\n"
       )
+
+# referências para a realização do requisito:
+# https://pymotw.com/2/collections/counter.html
+# https://www.alura.com.br/artigos/lidando-com-datas-e-horarios-no-
+# python?gclid=CjwKCAiAksyNBhAPEiwAlDBeLNIVRWhEaRlYgb99XxvRn3LWmt0uk
+# lRrXwCgtKXi6q24xrVkXutYxRoCtosQAvD_BwE
+# https://stackoverflow.com/questions/5166842/sort-dates-in-python-array
