@@ -2,7 +2,7 @@ from inventory_report.reports.complete_report import CompleteReport
 import pytest
 
 
-@pytest.fixture  # push
+@pytest.fixture
 def stock():
     return [
         {
