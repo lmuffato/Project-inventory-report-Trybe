@@ -11,5 +11,5 @@ class SimpleReport:
         return (
             f"Data de fabricação mais antiga: {older}\n"
             f"Data de validade mais próxima: {newer}\n"
-            f"Empresa com maior quantidade de produtos estocados: {company}"
+            f"Empresa com maior quantidade de produtos estocados: {company}\n"
         )
