@@ -20,14 +20,14 @@ class SimpleReport():
         empresa_maior_quantidade = max(nomes_empresa_counter)
         data_validade_mais_recente = datas_validade[0]
         data_fabricacao_mais_antiga = datas_fabricacao[0]
-      return (
-        "Data de fabricação mais antiga:"
-        f" {data_fabricacao_mais_antiga}\n"
-        "Data de validade mais próxima:"
-        f" {data_validade_mais_recente}\n"
-        "Empresa com maior quantidade de produtos estocados:"
-        f" {empresa_maior_quantidade}\n"
-      )
+        return (
+            "Data de fabricação mais antiga:"
+            f" {data_fabricacao_mais_antiga}\n"
+            "Data de validade mais próxima:"
+            f" {data_validade_mais_recente}\n"
+            "Empresa com maior quantidade de produtos estocados:"
+            f" {empresa_maior_quantidade}\n"
+        )
 
 # referências para a realização do requisito:
 # https://pymotw.com/2/collections/counter.html
