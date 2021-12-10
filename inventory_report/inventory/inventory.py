@@ -3,8 +3,6 @@ import csv
 
 class Inventory:
 
-  # list_of_dicts = []
-
   def __init__(self, path):
     self.path = path
 
@@ -17,5 +15,4 @@ class Inventory:
         data = [row for row in reader]
       return data
 
-      # if (in)
     
