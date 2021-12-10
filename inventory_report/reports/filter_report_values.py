@@ -32,3 +32,14 @@ class FilterValues:
             empresas.append(product['nome_da_empresa'])
         empresa = statistics.mode(empresas)
         return empresa
+
+    def get_produtos_por_empresa(product_list):
+        empresas = {}
+        stringEmpresas = ''
+        for product in product_list:
+            if product['nome_da_empresa'] not in empresas:
+                empresas[product['nome_da_empresa']] = 0
+            empresas[product['nome_da_empresa']] += 1
+        for empresa in empresas:
+            stringEmpresas += f"- {empresa}: {empresas[empresa]}\n"
+        return stringEmpresas
