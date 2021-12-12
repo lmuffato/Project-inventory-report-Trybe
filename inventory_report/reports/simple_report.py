@@ -15,11 +15,11 @@ class SimpleReport:
         validate = Functions.data_de_validade(today, path, validate)
         item = iter(path)
         while item:
-          try:
-              result = next(item)
-              nomes.append(result['nome_da_empresa'])
-          except StopIteration:
-              break
+            try:
+                result = next(item)
+                nomes.append(result['nome_da_empresa'])
+            except StopIteration:
+                break
         nomes = Counter(nomes)
         nome = nomes.most_common()
         nome = nome[0][0]
