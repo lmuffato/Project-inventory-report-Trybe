@@ -2,6 +2,9 @@ from datetime import datetime
 
 
 class SimpleReport():
+    def __init__():
+        pass
+
     def generate(dic_arr):
         today = datetime.today()
         old_manufact_date = dic_arr[0]["data_de_fabricacao"]
