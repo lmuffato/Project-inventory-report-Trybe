@@ -1,17 +1,21 @@
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
-import csv
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
 
 
 class Inventory():
-    def import_data(path, report_type):
-        if path.endswith('.csv'):
-            with open(path) as file:
-                dictionary_obj = csv.DictReader(file)
-                dictionary_list = []
-                for lists in dictionary_obj:
-                    dictionary_list.append(lists)
-            if (report_type == "simples"):
-                return SimpleReport.generate(dictionary_list)
-            else:
-                return CompleteReport.generate(dictionary_list)
+    def generate(report_type, dict_list):
+        if report_type == "simples":
+            return SimpleReport.generate(dict_list)
+        else:
+            return CompleteReport.generate(dict_list)
+
+    @classmethod
+    def import_data(cls, path, report_type):
+        if path.endswith(".csv"):
+            dic_list = CsvImporter.import_data(path)
+            return cls.generate(report_type, dic_list)
+        elif path.endswith('.json'):
+            dic_list = JsonImporter.import_data(path)
+            return cls.generate(report_type, dic_list)
