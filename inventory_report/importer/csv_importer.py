@@ -3,7 +3,7 @@ import csv
 from inventory_report.importer.importer import Importer
 
 
-class JsonImporter(Importer):
+class CsvImporter(Importer):
     def import_data(path):
         indexOfDot = path.find(".")
         firstLetterOfExtention = path(indexOfDot + 1)
