@@ -7,3 +7,5 @@ class CompleteReport():
 
     def generate(cls, list):
         simple_report = cls.simple_report.generate(list)
+        stock_by_company = cls.simple_report.verify_companies_stock(list)
+        
