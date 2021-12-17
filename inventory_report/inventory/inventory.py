@@ -7,11 +7,11 @@ from inventory_report.importer.json_importer import JsonImporter
 
 class Inventory:
     def read(path):
-        indexOfDot = path.find(".")
-        firstLetterOfExtention = path(indexOfDot + 1)
-        if firstLetterOfExtention("j"):
+        indexOfDot = path.find(".") + 1
+        firstLetterOfExtention = path[indexOfDot]
+        if firstLetterOfExtention == "j":
             return JsonImporter.import_data(path)
-        elif firstLetterOfExtention("c"):
+        elif firstLetterOfExtention == "c":
             return CsvImporter.import_data(path)
 
     @classmethod
