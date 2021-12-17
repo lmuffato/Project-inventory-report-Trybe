@@ -1,21 +1,32 @@
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
-import csv
+import pandas as pd
+
 
 class Inventory():
 
     @staticmethod
     def import_data(path, report_type):
-        with open(path) as file:
-            my_data = csv.DictReader(file, delimiter=',', quotechar='"')
-            heads, *data = my_data
-            obj = [heads, *data]
+        splited_path = path.split('.')
+        exten = splited_path[len(splited_path) - 1]
+        print(exten)
+        if exten == "csv":
+            df = pd.read_csv(path)
 
+        if exten == "xml":
+            df = pd.read_xml(path)
+            print(df)
+
+        if exten == "json":
+            df = pd.read_json(path)
 
         if report_type == "simples":
-            report = SimpleReport.generate(obj)
+            report = SimpleReport.generate(df)
             return report
 
-        if report_type == "completo":
-            report = CompleteReport.generate(obj)
-            return report
+        report = CompleteReport.generate(df)
+        return report
+
+
+log = Inventory.import_data("inventory_report/data/inventory.xml", "simples")
+print(log)
