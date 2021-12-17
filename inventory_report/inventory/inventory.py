@@ -9,7 +9,6 @@ class Inventory():
     def import_data(path, report_type):
         splited_path = path.split('.')
         exten = splited_path[len(splited_path) - 1]
-        print(exten)
         if exten == "csv":
             df = pd.read_csv(path)
 
