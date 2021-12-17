@@ -45,13 +45,13 @@ class SimpleReport():
         return company_name
 
     @classmethod
-    def generate(cls, list):
-        earliest_manufact_date = cls.earliest_manufact_date(list)
-        closest_expiration_date = cls.closest_expiration_date(list)
-        companies_stock = cls.verify_companies_stock(list)
-        stock = cls.largest_stock(companies_stock)
+    def generate(self, list):
+        earliest_manufact_date = self.earliest_manufact_date(list)
+        closest_expiration_date = self.closest_expiration_date(list)
+        companies_stock = self.verify_companies_stock(list)
+        stock = self.largest_stock(companies_stock)
 
         str1 = f'Data de fabricação mais antiga: {earliest_manufact_date}\n'
         str2 = f'Data de validade mais próxima: {closest_expiration_date}\n'
-        str3 = f'Empresa com maior quantidade de produtos estocados: {stock}'
+        str3 = f'Empresa com maior quantidade de produtos estocados: {stock}\n'
         return str1 + str2 + str3
