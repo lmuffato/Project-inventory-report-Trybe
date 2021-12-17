@@ -15,8 +15,8 @@ class Inventory:
             return CsvImporter.import_data(path)
 
     @classmethod
-    def import_data(cls, caminho, type):
-        list = cls.read(caminho)
+    def import_data(cls, path, type):
+        list = cls.read(path)
         if type == "simples":
             return SimpleReport.generate(list)
         if type == "completo":
