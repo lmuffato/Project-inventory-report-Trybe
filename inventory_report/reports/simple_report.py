@@ -50,4 +50,8 @@ class SimpleReport():
         closest_expiration_date = cls.closest_expiration_date(list)
         companies_stock = cls.verify_companies_stock(list)
         stock = cls.largest_stock(companies_stock)
-        
+
+        str1 = f'Data de fabricação mais antiga: {earliest_manufact_date}\n'
+        str2 = f'Data de validade mais próxima: {closest_expiration_date}\n'
+        str3 = f'Empresa com maior quantidade de produtos estocados: {stock}'
+        return str1 + str2 + str3
