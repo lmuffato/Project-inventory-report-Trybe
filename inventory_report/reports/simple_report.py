@@ -26,6 +26,28 @@ class SimpleReport():
         return closest_expiration_date
 
     @classmethod
+    def verify_companies_stock(cls, products):
+        companies_stock = {}
+        for product in products:
+            company_name = product['nome_da_empresa']
+            if(companies_stock != {}):
+                for company in list(companies_stock):
+                    if(company == company_name):
+                        companies_stock[company] += 1
+                    else:
+                        companies_stock[company_name] = 1
+            else:
+                companies_stock[company_name] = 1
+        return companies_stock
+
+    def largest_stock(companies_stock):
+        company_name = max(companies_stock, key=companies_stock.get)
+        return company_name
+
+    @classmethod
     def generate(cls, list):
         earliest_manufact_date = cls.earliest_manufact_date(list)
         closest_expiration_date = cls.closest_expiration_date(list)
+        companies_stock = cls.verify_companies_stock(list)
+        stock = cls.largest_stock(companies_stock)
+        
