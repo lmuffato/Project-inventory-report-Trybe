@@ -1,5 +1,6 @@
 from inventory_report.importer.importer import Importer
 import pandas as pd
+# vinicius grade
 
 
 class XmlImporter(Importer):
