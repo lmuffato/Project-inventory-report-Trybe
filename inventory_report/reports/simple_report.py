@@ -33,7 +33,8 @@ class SimpleReport():
             if(companies_stock != {}):
                 for company in list(companies_stock):
                     if(company == company_name):
-                        companies_stock[company] += 1
+                        companies_stock[company_name] += 1
+                        break
                     else:
                         companies_stock[company_name] = 1
             else:
