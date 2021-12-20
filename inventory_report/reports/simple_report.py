@@ -3,6 +3,7 @@ from datetime import date
 
 
 class SimpleReport:
+
     @staticmethod
     def generate(products):
         df = pd.DataFrame(products)
