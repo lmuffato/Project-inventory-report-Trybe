@@ -11,4 +11,4 @@ class CsvImporter(Importer):
             with open(path) as file:
                 data = csv.DictReader(file)
                 return [*data]
-        raise ValueError
+        raise ValueError('Arquivo inválido')
