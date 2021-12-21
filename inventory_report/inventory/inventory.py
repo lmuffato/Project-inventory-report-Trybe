@@ -1,3 +1,4 @@
+from inventory_report.importer.xml_importer import XmlImporter
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
@@ -13,6 +14,8 @@ class Inventory:
             return JsonImporter.import_data(path)
         elif firstLetterOfExtention == "c":
             return CsvImporter.import_data(path)
+        elif firstLetterOfExtention == "x":
+            return XmlImporter.import_data(path)
 
     @classmethod
     def import_data(cls, path, type):
