@@ -18,12 +18,6 @@ class XmlImporter(Importer):
                 for data in child:
                     child_data[data.tag] = data.text
                 lista.append(child_data)
-            print(lista)
             return lista
         else:
             raise ValueError('Arquivo inválido')
-
-
-# if(__name__ == '__main__'):
-#     data = XmlImporter()
-#     data.import_data('inventory_report/data/inventory.xml')
