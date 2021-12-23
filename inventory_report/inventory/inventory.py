@@ -12,7 +12,6 @@ class Inventory:
         if caminho.endswith(".json"):
             return JsonImporter.import_data(caminho)
 
-
     @classmethod
     def import_data(cls, caminho, type):
         list = cls.leitura(caminho)
