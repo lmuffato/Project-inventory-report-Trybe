@@ -12,6 +12,6 @@ class CompleteReport(SimpleReport):
             second_report += f"- {company}: {counted_items[company]}\n"
         return(
             f"{first_report}\n"
-            f"\n Produtos estocados por empresa:\n"
-            f"- {second_report}"
+            "Produtos estocados por empresa: \n"
+            f"{second_report}"
         )
