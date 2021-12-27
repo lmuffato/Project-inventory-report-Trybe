@@ -8,6 +8,8 @@ class Inventory:
         if path.endswith(".csv"):
             file = pd.read_csv(path).to_dict(orient="records")
 
+        if path.endswith(".json"):
+            file = pd.read_json(path).to_dict(orient="records")
         return file
 
     @classmethod
