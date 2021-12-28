@@ -11,7 +11,7 @@ intel-cmplr-lib-rt==2021.4.0
 intel-cmplr-lic-rt==2021.4.0
 intel-opencl-rt==2021.4.0
 intel-openmp==2021.4.0
--e git+ssh://git@github.com/tryber/sd-010-a-inventory-report.git@183224da09fc93459a5657e719768cab90cc7d4b#egg=inventory_report
+-e .
 lxml==4.7.1
 mccabe==0.6.1
 mkl==2021.4.0
