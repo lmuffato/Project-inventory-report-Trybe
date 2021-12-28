@@ -14,12 +14,17 @@ class Inventory:
         with open(path, mode="r") as file:
             return json.load(file)
 
-    def import_data(self, path, type):
+    # necessidade de identificar classmethod e trocar self por cls vista
+    # no repositório do Jodiel e no stackoverflow
+    # https://stackoverflow.com/questions/4613000/difference-between-cls-and-self-in-python-classes
+
+    @classmethod
+    def import_data(cls, path, type):
         data = []
         if path.endswith("csv"):
-            data = self.open_csv(path)
+            data = cls.open_csv(path)
         elif path.endswith("json"):
-            data = self.open_json(path)
+            data = cls.open_json(path)
         if type == "simples":
             return SimpleReport.generate(data)
         return CompleteReport.generate(data)
