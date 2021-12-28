@@ -10,7 +10,10 @@ class Inventory:
     def open_csv(path):
         with open(path, mode="r") as file:
             data = csv.DictReader(file, delimiter=",", quotechar='"')
-            return data
+            formated_data = []
+            for items in data:
+                formated_data.append(items)
+            return formated_data
 
     def open_json(path):
         with open(path, mode="r") as file:
