@@ -7,6 +7,8 @@ import xml.etree.ElementTree as ET
 
 class Inventory:
 
+    # resolução para aprovacao do requisito 3 visto no video
+    # https://www.youtube.com/watch?v=DRqEk1ipv5E
     def open_csv(path):
         with open(path, mode="r") as file:
             data = csv.DictReader(file, delimiter=",", quotechar='"')
