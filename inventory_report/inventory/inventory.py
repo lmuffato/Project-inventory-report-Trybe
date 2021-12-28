@@ -26,7 +26,3 @@ class Inventory():
 
         report = CompleteReport.generate(df)
         return report
-
-
-log = Inventory.import_data("inventory_report/data/inventory.xml", "simples")
-print(log)
