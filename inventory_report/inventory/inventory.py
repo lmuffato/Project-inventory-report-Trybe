@@ -3,6 +3,9 @@ import json
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
 import xml.etree.ElementTree as ET
+# from lxml import objectify
+# import lxml.etree
+import xmltodict
 
 
 class Inventory:
@@ -17,9 +20,15 @@ class Inventory:
             return json.load(file)
 
     # https://www.geeksforgeeks.org/reading-and-writing-xml-files-in-python/
+    # https://stackoverflow.com/questions/3217487/how-to-get-all-the-info-in-xml-into-dictionary-with-python
+    # for visto no repositorio do Luan e Orlando
     def open_xml(path):
         data = ET.parse(path)
-        return data.getroot()
+        xml_data = data.getroot()
+        data = [
+            {elem.tag: elem.text for elem in item} for item in xml_data
+        ]
+        return data
 
     # necessidade de identificar classmethod e trocar self por cls vista
     # no repositório do Jodiel e no stackoverflow
