@@ -1,7 +1,6 @@
 class SimpleReport:
     @classmethod
     def generate(cls, products):
-        
         r1 = "Data de fabricação mais antiga: "
         r2 = "Data de validade mais próxima: "
         r3 = "Empresa com maior quantidade de produtos estocados: "
