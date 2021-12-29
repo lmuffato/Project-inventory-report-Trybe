@@ -1,12 +1,21 @@
 from inventory_report.reports.simple_report import SimpleReport
 from collections import Counter
 
+# Herda o metódo da classe SimpleReport
+# Método generate retorna a quantidade de produtos em estoque
+# alem das informações fornecidas pela classe SimpleReport
+
 
 class CompleteReport(SimpleReport):
     def generate(data):
         simple = SimpleReport.generate(data)
-
+        # Calcula a quantidade de vezes que o nome de uma empresa aparece na
+        # lista fornecida
         products = Counter(product["nome_da_empresa"] for product in data)
+        print(products)
+
+        # Formata a forma de exibição do nome da empresa e quantidade de vezes
+        # que aparece
 
         def stocked_report():
             result = ""
@@ -14,13 +23,14 @@ class CompleteReport(SimpleReport):
                 result += f"- {name}: {products[name]}\n"
             return result
 
-        print(
+        return (
             f"{simple}\n"
             "Produtos estocados por empresa: \n"
             f"{stocked_report()}"
         )
 
 
+# PARA TESTE
 # CompleteReport.generate(
 #     [
 #         {
