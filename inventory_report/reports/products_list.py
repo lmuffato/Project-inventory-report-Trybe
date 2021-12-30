@@ -30,7 +30,7 @@ class ProductsList:
 
         return datetime.strftime(min(expired_dates), '%Y-%m-%d')
 
-    def get_company_with_largest_stock(self):
+    def get_stock_qty_by_company(self):
         company_stock = {}
         for p in self.products:
             if p['nome_da_empresa'] in company_stock.keys():
@@ -38,4 +38,9 @@ class ProductsList:
             else:
                 company_stock[p['nome_da_empresa']] = 1
 
-        return max(company_stock, key=company_stock.get)
+        return company_stock
+
+    def get_company_with_largest_stock(self):
+        stock_by_company = self.get_stock_qty_by_company()
+
+        return max(stock_by_company, key=stock_by_company.get)
