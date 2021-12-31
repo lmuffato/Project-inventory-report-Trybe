@@ -1,13 +1,17 @@
 from inventory_report.importer.importer import Importer
-from inventory_report.inventory.inventory import open_xml
+import xml.etree.ElementTree as ET
 
 
 class XmlImporter(Importer):
 
-    def import_data(path):
-        try:
-            data = open_xml(path)
-            formated_data = Importer.showData(data)
-            return formated_data
-        except OSError:
-            print("Extensão inválida")
+    @classmethod
+    def import_data(self, path):
+        if path.endswith("xml"):
+            data = ET.parse(path)
+            xml_data = data.getroot()
+            data = [
+                {elem.tag: elem.text for elem in item} for item in xml_data
+            ]
+            return data
+        else:
+            raise ValueError("Arquivo inválido")

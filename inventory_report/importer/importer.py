@@ -1,4 +1,8 @@
-class Importer:
+from abc import ABC, abstractmethod
 
-    def showData(path, type):
-        return path
+
+class Importer(ABC):
+
+    @abstractmethod
+    def import_data(self):
+        pass

@@ -1,13 +1,16 @@
 from inventory_report.importer.importer import Importer
-from inventory_report.inventory.inventory import open_json
+import json
 
 
+# forma de passar o erro vista no repositório do André Sartoreto
+# https://github.com/tryber/sd-010-a-inventory-report/pull/39
 class JsonImporter(Importer):
 
-    def import_data(path):
-        try:
-            data = open_json(path)
-            formated_data = Importer.showData(data)
-            return formated_data
-        except OSError:
-            print("Extensão inválida")
+    @classmethod
+    def import_data(self, path):
+        if path.endswith("json"):
+            file = open(path, "r")
+            data = json.load(file)
+            return data
+        else:
+            raise ValueError("Arquivo inválido")
