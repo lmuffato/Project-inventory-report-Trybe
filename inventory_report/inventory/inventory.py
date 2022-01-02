@@ -32,3 +32,5 @@ class Inventory:
         if type == "completo":
             report = CompleteReport.generate(file)
         return report
+
+# problemas com o Panda
