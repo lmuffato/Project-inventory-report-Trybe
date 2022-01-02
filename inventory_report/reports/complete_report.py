@@ -8,12 +8,10 @@ class CompleteReport(SimpleReport):
         all_companies_stock = dict(
             Counter([item["nome_da_empresa"] for item in inventory])
         )
-        
         output = ""
         for item in all_companies_stock:
             output += f"- {item}: {all_companies_stock[item]}\n"
 
-        # [("Target Corporation", 4), ...]
         return (
             f"{simple_report}\n"
             "Produtos estocados por empresa: \n"
