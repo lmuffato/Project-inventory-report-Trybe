@@ -1,30 +1,20 @@
-from collections import Counter
-from datetime import datetime
+import pandas as pd
+from datetime import date
 
 
 class SimpleReport:
+
     @staticmethod
-    def generate(inventory):
-        current_date = datetime.now().strftime("%Y%M%D")
-        company_names = [item["nome_da_empresa"] for item in inventory]
-        oldest_fac_date = min(
-            [item["data_de_fabricacao"] for item in inventory]
-        )
-        neareast_vali_date = min(
-            [
-                item["data_de_validade"]
-                for item in inventory
-                if item["data_de_validade"] > current_date
-            ]
-        )
+    def generate(products):
+        df = pd.DataFrame(products)
+        date_now = str(date.today())
+        oldest_fac_date = df['data_de_fabricacao'].min()
+        vali_date = df['data_de_validade']
+        closest_expire_date = vali_date[(vali_date > date_now)].min()
+        company_largest_stock = df['nome_da_empresa'].value_counts().idxmax()
 
-        biggest_stock_company, _result = Counter(
-            company_names
-        ).most_common(1)[0]
-
-        return (
-            f"""Data de fabricação mais antiga: {oldest_fac_date}
-Data de validade mais próxima: {neareast_vali_date}
-Empresa com maior quantidade de produtos estocados: {biggest_stock_company}
-"""
-        )
+        return (f"Data de fabricação mais antiga: {oldest_fac_date}\n"
+                f"Data de validade mais próxima: {closest_expire_date}\n"
+                f"Empresa com maior quantidade de produtos estocados: "
+                f"{company_largest_stock}\n"
+                )
