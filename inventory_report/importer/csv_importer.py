@@ -1,5 +1,6 @@
 import csv
 
+
 class CsvImporter():
     def import_data(path):
         data = []
