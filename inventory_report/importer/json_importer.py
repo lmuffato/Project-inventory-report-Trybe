@@ -8,7 +8,7 @@ class JsonImporter(Importer):
         with open(path) as file:
             reader = json.load(file)
             return reader
-    
+
     @staticmethod
     def import_data(file):
         path = file.split('.')
@@ -17,4 +17,3 @@ class JsonImporter(Importer):
             raise ValueError('Arquivo inválid')
         file_read = JsonImporter.read_json(file)
         return file_read
-    
