@@ -14,6 +14,6 @@ class Inventory():
         print(list)
         if type == 'simples':
             return SimpleReport.generate(list)
-        
+
         if type == 'completo':
             return CompleteReport.generate(list)
