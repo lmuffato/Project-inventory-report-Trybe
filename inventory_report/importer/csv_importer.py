@@ -11,4 +11,3 @@ class CsvImporter(Importer):
         with open(file) as csvfile:
             file_read = csv.DictReader(csvfile)
             return [row for row in file_read]
-          
