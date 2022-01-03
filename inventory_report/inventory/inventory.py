@@ -45,6 +45,3 @@ class Inventory:
         if report_type == "simples":
             return SimpleReport.generate(enterprises_list)
         return CompleteReport.generate(enterprises_list)
-
-
-Inventory.import_xml("inventory_report/data/inventory.xml")
