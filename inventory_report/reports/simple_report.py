@@ -5,7 +5,7 @@ import collections
 class SimpleReport():
     @classmethod
     def generate(self, product_list):
-        data_atual = date.today().strftime("%Y/%m/%d")
+        data_atual = date.today().strftime("%Y-%m-%d")
         datas_fabricacao = []
         datas_validade = []
         nomes_empresa = []
