@@ -23,12 +23,23 @@ class SimpleReport:
                     expire = products['data_de_validade']
         return expire
 
+    def more_products(dict):
+        companies = []
+        for product in dict:
+            companies.append(product['nome_da_empresa'])
+        return max(companies)
+        # outra forma:
+        # companies = [product['nome_da_empresa'] for product in dict]
+        # return max(companies)
+
     @classmethod
     def generate(self, dict):
         fabricated = self.get_first_fabricated(dict)
         expire = self.get_to_expire(dict)
+        company = self.more_products(dict)
 
         return (
             f'Data de fabricação mais antiga: {fabricated}\n'
             f'Data de validade mais próxima: {expire}\n'
+            f'Empresa com maior quantidade de produtos estocados: {company}\n'
         )
