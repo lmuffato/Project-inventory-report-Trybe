@@ -11,6 +11,7 @@
     "python.formatting.provider": "black",
     "conventionalCommits.scopes": [
         "Importer",
-        "Inventory"
+        "Inventory",
+        "Main"
     ]
 }
