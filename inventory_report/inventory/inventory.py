@@ -34,8 +34,8 @@ class Inventory:
             tree = ET.parse(file)
             root = tree.getroot()
             file_read = [
-              {elem.tag: elem.text for elem in child} for child in root
-              ]
+                {elem.tag: elem.text for elem in child} for child in root
+                ]
         if relatory_type == "simples":
             return SimpleReport.generate(file_read)
         elif relatory_type == "completo":
