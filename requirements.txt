@@ -5,7 +5,7 @@ click==8.0.3
 coverage==6.2
 flake8==3.8.4
 iniconfig==1.1.1
--e git+git@github.com:tryber/sd-010-a-inventory-report.git@a61f5a8d5ca6bf8736c6c9de06e19f5ad4acd493#egg=inventory_report
+-e .
 lxml==4.7.1
 mccabe==0.6.1
 mypy-extensions==0.4.3
