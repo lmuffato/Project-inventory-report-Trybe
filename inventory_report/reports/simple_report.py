@@ -1,5 +1,5 @@
-from datetime import datetime
-
+from datetime import date
+# https://www.programiz.com/python-programming/datetime/current-datetime
 
 class SimpleReport:
 
@@ -13,15 +13,13 @@ class SimpleReport:
         return first_fabricated
 
     def get_to_expire(dict):
-        current_date = datetime.now().strftime("%Y/%M/%D")
-        expire = ''
-        for products in dict:
-            if expire == '' and products['data_de_validade'] > current_date:
-                expire = products['data_de_validade']
-            elif expire > products['data_de_validade']:
-                if products['data_de_validade'] > current_date:
-                    expire = products['data_de_validade']
-        return expire
+        today = date.today()
+        current_date = today.strftime('%Y-%m-%d')
+        expire_date = []
+        for product in dict:
+            if product['data_de_validade'] > current_date:
+                expire_date.append(product['data_de_validade'])
+        return min(expire_date)
 
     def more_products(dict):
         companies = []
