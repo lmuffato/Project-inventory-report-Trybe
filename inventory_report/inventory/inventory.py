@@ -11,7 +11,6 @@ class Inventory():
 
     def import_data(path, type):
         list = Inventory.leitura(path)
-        print(list)
         if type == 'simples':
             return SimpleReport.generate(list)
 
