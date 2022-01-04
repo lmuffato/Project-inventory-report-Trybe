@@ -8,11 +8,11 @@ class SimpleReport:
         list_products = []
         list_products2 = []
         quantity = []
-        current_date = datetime.now().strftime("%Y/%M/%D")
+        current_date = datetime.now().strftime("%Y-%m-%d")
         for product in list_dict:
             if product["data_de_fabricacao"]:
                 list_products.append(product["data_de_fabricacao"])
-            if product["data_de_validade"] > current_date:
+            if product["data_de_validade"] >= current_date:
                 list_products2.append(product["data_de_validade"])
             if product["nome_da_empresa"]:
                 quantity.append(product["nome_da_empresa"])
