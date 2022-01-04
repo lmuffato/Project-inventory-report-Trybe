@@ -3,7 +3,7 @@ from datetime import datetime
 
 class SimpleReport:
     def generate(data):
-        today = datetime.now().strftime('%Y-%M-%D')
+        today = datetime.now().strftime('%Y-%m-%d')
         manufacture_date = [item['data_de_fabricacao'] for item in data]
         expiration_date = [item['data_de_validade'] for item in data
                            if item['data_de_validade'] > today]
