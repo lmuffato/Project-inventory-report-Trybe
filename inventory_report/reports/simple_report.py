@@ -7,7 +7,7 @@ class SimpleReport(StockUtils):
         oldest_date = SimpleReport.get_oldest_manufacture_date(
           stock, 'data_de_fabricacao'
         )
-        closest_due_date = SimpleReport.get_closest_manufacture_date(
+        closest_due_date = SimpleReport.get_closest_due_date(
           stock, 'data_de_validade'
         )
         biggest_inventory = SimpleReport.get_biggest_inventory(

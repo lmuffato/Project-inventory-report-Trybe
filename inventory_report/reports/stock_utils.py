@@ -12,7 +12,7 @@ class StockUtils:
           key=StockUtils.get_absolute_date
         )
 
-    def get_closest_manufacture_date(stock, str_key):
+    def get_closest_due_date(stock, str_key):
         return min(
           [date.fromisoformat(product[str_key]) for product in stock],
           key=StockUtils.get_absolute_date
