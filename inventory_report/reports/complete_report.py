@@ -70,4 +70,3 @@ class CompleteReport(SimpleReport):
 
 
 # print(CompleteReport.generate(mockData))
-# print(CompleteReport.generate(mockData))
