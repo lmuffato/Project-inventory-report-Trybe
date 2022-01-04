@@ -12,20 +12,20 @@ class Inventory:
         "completo": CompleteReport.generate,
     }
 
-    def import_data(file_path, report_type):
+    def import_data(file, type):
         array = []
 
-        if file_path.endswith(".csv"):
-            with open(file_path) as csvfile:
+        if file.endswith(".csv"):
+            with open(file) as csvfile:
                 reader = csv.DictReader(csvfile)
                 array = [row for row in reader]
 
-        elif file_path.endswith(".json"):
-            with open(file_path, "r") as file:
+        elif file.endswith(".json"):
+            with open(file, "r") as file:
                 array = json.load(file)
 
-        elif file_path.endswith(".xml"):
-            tree = ET.parse(file_path)
+        elif file.endswith(".xml"):
+            tree = ET.parse(file)
             root = tree.getroot()
             array = [
                 {el.tag: el.text for el in record}
@@ -34,4 +34,4 @@ class Inventory:
 
         else:
             raise ValueError("Arquivo inválido")
-        return Inventory.__report_functions[report_type](array)
+        return Inventory.__report_functions[type](array)
