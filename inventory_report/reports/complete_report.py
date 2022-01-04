@@ -1,11 +1,13 @@
-from inventory_report.reports.simple_report import SimpleReport
 from collections import Counter
+
+from inventory_report.reports.simple_report import SimpleReport
 
 
 class CompleteReport(SimpleReport):
     def contar_produtos(list):
         products_quantities = Counter(
-           product["nome_da_empresa"] for product in list)
+            product["nome_da_empresa"] for product in list
+        )
         return dict(products_quantities)
 
     @classmethod
@@ -15,7 +17,7 @@ class CompleteReport(SimpleReport):
         products_for_company = columns.contar_produtos(list)
 
         def products_stocked_report():
-            output = ''
+            output = ""
             for comp_name in products_for_company:
                 output += f"- {comp_name}: {products_for_company[comp_name]}\n"
             return output
@@ -67,4 +69,5 @@ class CompleteReport(SimpleReport):
 #     ]
 
 
+# print(CompleteReport.generate(mockData))
 # print(CompleteReport.generate(mockData))
