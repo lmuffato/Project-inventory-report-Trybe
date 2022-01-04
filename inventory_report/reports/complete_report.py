@@ -7,7 +7,6 @@ class CompleteReport(SimpleReport):
         return self.generate_complete_report(stock)
 
     def generate_complete_report(stock):
-        key = 0
         total_stock_count = SimpleReport.get_stock_count(
           stock, 'nome_da_empresa'
         )
@@ -17,13 +16,9 @@ class CompleteReport(SimpleReport):
 
         total_count = len(total_stock_values)
 
-        detailed_report = []
-
-        while key < total_count:
-            detailed_report.append(
-              f'- {total_stock_keys[key]}: {total_stock_values[key]}\n'
-            )
-            key += 1
+        detailed_report = SimpleReport.get_stock_count_by_company(
+          total_stock_keys, total_stock_values, total_count
+        )
 
         complete_report_message = '\nProdutos estocados por empresa: \n'
 

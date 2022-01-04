@@ -27,5 +27,15 @@ class StockUtils:
     def get_stock_count(stock, str_key):
         return Counter(StockUtils.get_company_name_list(stock, str_key))
 
+    def get_stock_count_by_company(keys, values, total_count):
+        key = 0
+        detailed_report = []
+        while key < total_count:
+            detailed_report.append(
+              f'- {keys[key]}: {values[key]}\n'
+            )
+            key += 1
+        return detailed_report
+
     def get_biggest_inventory(stock, str_key):
         return max(StockUtils.get_stock_count(stock, str_key))
