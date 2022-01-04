@@ -8,8 +8,7 @@ from inventory_report.reports.simple_report import SimpleReport
 
 
 class Inventory:
-    @classmethod
-    def import_data(cls, path, type):
+    def import_data(path, type):
         if path.endswith(".csv"):
             with open(path, mode="r") as csv_file:
                 data = [list(csv.DictReader(csv_file))]
