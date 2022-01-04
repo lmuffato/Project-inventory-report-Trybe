@@ -3,7 +3,7 @@ import csv
 from .importer import Importer
 
 
-class CSVImporter(Importer):
+class CsvImporter(Importer):
     @classmethod
     def import_data(cls, path):
         file_informations = cls.get_file_informations(path)
