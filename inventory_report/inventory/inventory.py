@@ -18,12 +18,11 @@ class Inventory:
             with open(path, mode="r") as csv_file:
                 reader = csv.DictReader(csv_file)
                 data = [row for row in reader]
-        elif path.endswith(".json"):
+        if path.endswith(".json"):
             with open(path, "r", encoding="utf-8") as json_file:
                 data = json.load(json_file)
-        elif path.endswith(".xml"):
+        if path.endswith(".xml"):
             data = pd.read_xml(path).to_dict(orient="records")
         if type == "simples":
             return SimpleReport.generate(data)
-        if type == "completo":
-            return CompleteReport.generate(data)
+        return CompleteReport.generate(data)
