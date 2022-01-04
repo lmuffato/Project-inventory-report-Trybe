@@ -1,6 +1,7 @@
 from datetime import date
 # https://www.programiz.com/python-programming/datetime/current-datetime
 
+
 class SimpleReport:
 
     def get_first_fabricated(dict):
