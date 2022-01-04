@@ -2,17 +2,20 @@ from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
 from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
 
 
-class Inventory():
+class Inventory:
     def leitura(path):
-        if path.endswith('.csv'):
+        if path.endswith(".csv"):
             return CsvImporter.import_data(path)
+        if path.endswith(".json"):
+            return JsonImporter.import_data(path)
 
     def import_data(path, type):
         list = Inventory.leitura(path)
-        if type == 'simples':
+        if type == "simples":
             return SimpleReport.generate(list)
 
-        if type == 'completo':
+        if type == "completo":
             return CompleteReport.generate(list)
