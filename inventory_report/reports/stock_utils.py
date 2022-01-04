@@ -21,6 +21,11 @@ class StockUtils:
           key=StockUtils.get_absolute_date
         )
 
+    def get_company_name_list(stock, str_key):
+        return [item[str_key] for item in stock]
+
+    def get_stock_count(stock, str_key):
+        return Counter(StockUtils.get_company_name_list(stock, str_key))
+
     def get_biggest_inventory(stock, str_key):
-        list_of_companies = [product[str_key] for product in stock]
-        return max(Counter(list_of_companies))
+        return max(StockUtils.get_stock_count(stock, str_key))
