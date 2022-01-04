@@ -1,21 +1,20 @@
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
-
-import csv
+from inventory_report.importer.csv_importer import CSV_Importer
+import os
 
 
 class Inventory:
     def import_data(path, type):
-        data = []
-        with open(path) as csvFile:
-            csvReader = csv.DictReader(csvFile)
-            for rows in csvReader:
-                data.append(rows)
+        file_name, extension = os.path.splitext(path)
+
+        data_type = {
+            ".csv": CSV_Importer.import_data,
+        }
+
+        data = data_type[extension](path)
 
         if type == 'simples':
             return SimpleReport.generate(data)
         elif type == 'completo':
             return CompleteReport.generate(data)
-
-
-Inventory.import_data('inventory_report/data/inventory.csv', 'simples')
