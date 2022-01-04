@@ -19,4 +19,5 @@ class StockUtils:
         )
 
     def get_biggest_inventory(stock, str_key):
-        return Counter([product[str_key] for product in stock])
+        list_of_companies = [product[str_key] for product in stock]
+        return max(Counter(list_of_companies))
