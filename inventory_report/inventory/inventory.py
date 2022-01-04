@@ -1,9 +1,14 @@
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
 import json
+import csv
 
 
 class Inventory:
+    def read_CSV(path):
+        with open(path) as file:
+            return list(csv.DictReader(file))
+
     def read_JSON(path):
         with open(path) as file:
             list = json.load(file)
@@ -12,6 +17,8 @@ class Inventory:
     def check_type(self, path):
         if ".json" in path:
             return self.read_JSON(path)
+        if ".csv" in path:
+            return self.read_CSV(path)
         else:
             breakpoint
 
@@ -21,5 +28,5 @@ class Inventory:
 
         if type == "completo":
             return CompleteReport.generate(list)
-        else:
+        elif type == "simples":
             return SimpleReport.generate(list)
