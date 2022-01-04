@@ -1,5 +1,4 @@
 from datetime import date
-from collections import Counter
 
 
 class SimpleReport():
@@ -27,11 +26,21 @@ class SimpleReport():
         return closest_expiration_date
 
     def count_quantity_of_products(stock):
-        company_name = []
+        companies_products = {
+            product["nome_da_empresa"]: 0 for product in stock
+        }
         for product in stock:
-            company_name.append(product["nome_da_empresa"])
-        counter = Counter(company_name)
-        return max(counter)
+            companies_products[product["nome_da_empresa"]] += 1
+        return companies_products
+
+    @classmethod
+    def get_company_with_most_products(cls, stock):
+        companies_products = cls.count_quantity_of_products(stock)
+        return [
+            company_name for company_name in companies_products
+            if companies_products[company_name]
+            == max(companies_products.values())
+        ][0]
 
     @classmethod
     def generate(cls, stock):
@@ -41,5 +50,5 @@ class SimpleReport():
               "Data de validade mais próxima: "
               f"{cls.get_closest_expiration_date(stock)}\n"
               "Empresa com maior quantidade de produtos estocados: "
-              f"{cls.count_quantity_of_products(stock)}\n"
+              f"{cls.get_company_with_most_products(stock)}\n"
           )
