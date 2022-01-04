@@ -8,11 +8,13 @@ from inventory_report.reports.simple_report import SimpleReport
 
 
 class Inventory:
-    def import_data(path, type):
+    @classmethod
+    def import_data(cls, path, type):
         if path.endswith(".csv"):
             with open(path, mode="r") as csv_file:
-                data = [list(csv.DictReader(csv_file))]
-        if type == "simples":
-            return SimpleReport.generate(data)
-        if type == "completo":
-            return CompleteReport.generate(data)
+                reader = csv.DictReader(csv_file)
+                data = [row for row in reader]
+            if type == "simples":
+                return SimpleReport.generate(data)
+            if type == "completo":
+                return CompleteReport.generate(data)
