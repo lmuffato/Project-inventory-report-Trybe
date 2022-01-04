@@ -5,7 +5,7 @@
 import csv
 import json
 
-import pandas as pd
+import xmltodict
 
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
@@ -22,7 +22,9 @@ class Inventory:
             with open(path, "r", encoding="utf-8") as json_file:
                 data = json.load(json_file)
         if path.endswith(".xml"):
-            data = pd.read_xml(path).to_dict(orient="records")
+            with open(path) as xml_file:
+                file = xmltodict.parse(xml_file.read())["dataset"]["record"]
+                data = [dict(item) for item in file]
         if type == "simples":
             return SimpleReport.generate(data)
         return CompleteReport.generate(data)
