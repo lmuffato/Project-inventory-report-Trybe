@@ -10,10 +10,12 @@ class Inventory:
     def import_data(cls, path, type):
         if path.endswith('csv'):
             products = Csv_importer.import_csv(path)
-        elif path.endswith('json'):
-            products = Json_importer.import_json(path)
+
         elif path.endswith('xml'):
             products = Xml_importer.import_xml(path)
+
+        else:
+            products = Json_importer.import_json(path)
 
         if type == 'simples':
             return SimpleReport.generate(products)
