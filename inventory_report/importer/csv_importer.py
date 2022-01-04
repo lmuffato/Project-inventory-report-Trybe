@@ -1,8 +1,11 @@
 import csv
+from inventory_report.importer.importer import Importer
 
 
-class Csv_importer:
-    def import_csv(path):
+class CsvImporter(Importer):
+    def import_data(path):
+        if not path.endswith('csv'):
+            raise ValueError('Arquivo inválido')
         result = []
         with open(path) as csv_file:
             products_list = csv.DictReader(csv_file, delimiter=',')
