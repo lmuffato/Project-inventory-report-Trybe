@@ -2,6 +2,7 @@
 # https://www.pythonforbeginners.com/code-snippets-source-code/python-os-listdir-and-endswith
 # https://courses.cs.washington.edu/courses/cse140/13wi/csv-parsing.html
 import csv
+import json
 
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
@@ -14,7 +15,10 @@ class Inventory:
             with open(path, mode="r") as csv_file:
                 reader = csv.DictReader(csv_file)
                 data = [row for row in reader]
-            if type == "simples":
-                return SimpleReport.generate(data)
-            if type == "completo":
-                return CompleteReport.generate(data)
+        elif path.endswith(".json"):
+            with open(path, "r", encoding="utf-8") as json_file:
+                data = json.load(json_file)
+        if type == "simples":
+            return SimpleReport.generate(data)
+        if type == "completo":
+            return CompleteReport.generate(data)
