@@ -4,7 +4,6 @@ from inventory_report.importer.importer import Importer
 
 
 class JsonImporter(Importer):
-    # @staticmethod
     def import_data(file_to_read):
         if file_to_read.endswith(".json"):
             with open(file_to_read) as file:

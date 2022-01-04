@@ -1,25 +1,3 @@
-# class SalesReport(ABC):
-# def __init__(self, export_file):
-#     self.export_file = export_file
-#  ....
-# class SalesReportJSON(SalesReport)
-# sintaxe: # class MinhaClasseHerdeira(ClasseAscendente)
-
-# vamos invocar um método de classe (o método generate)
-# instanciando a classe SimpleReport
-# sintaxe: variável = SimpleReport()
-# variável.generate()
-
-# super() para indicar que queremos pegar o generate da classe mãe
-# variável companies_stock_items_counter
-# retorna no formato nome_da_empresa: quantidade de vezes que o nome aparece
-# Counter.items(): fazemos o for com .items() para retornar no formato
-# [(nome, quantidade de aparições), (nome, quantidade de aparições)]
-# for company_name, stock_quantity in dsadadasd.items()
-# sendo company_name correspondente a nome
-# sendo stock_quantity correspondente a quantidade de aparições
-# (ou quantidade de produtos que essa empresa tem em estoque)
-
 from inventory_report.reports.simple_report import SimpleReport
 
 from collections import Counter
