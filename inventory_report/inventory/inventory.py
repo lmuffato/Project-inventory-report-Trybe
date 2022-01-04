@@ -1,6 +1,7 @@
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.importer.csv_importer import CSV_Importer
+from inventory_report.importer.json_importer import JSON_Importer
 import os
 
 
@@ -10,6 +11,7 @@ class Inventory:
 
         data_type = {
             ".csv": CSV_Importer.import_data,
+            ".json": JSON_Importer.import_data,
         }
 
         data = data_type[extension](path)
