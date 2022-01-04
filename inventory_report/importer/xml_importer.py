@@ -1,4 +1,5 @@
-# https://stackoverflow.com/questions/2148119/how-to-convert-an-xml-string-to-a-dictionary
+# https://stackoverflow.com/questions/2148119
+# /how-to-convert-an-xml-string-to-a-dictionary
 # https://python-guide-pt-br.readthedocs.io/pt_BR/latest/scenarios/xml.html
 import xmltodict
 
