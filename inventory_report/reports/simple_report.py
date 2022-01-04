@@ -17,6 +17,7 @@ class SimpleReport:
             if product["nome_da_empresa"]:
                 quantity.append(product["nome_da_empresa"])
         print("oioioio", max(quantity))
+        print(list_products2)
 
         return (
             f"Data de fabricação mais antiga: {min(list_products)}\n"
