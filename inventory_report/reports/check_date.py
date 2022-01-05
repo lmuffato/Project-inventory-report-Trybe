@@ -5,14 +5,18 @@ class CheckDate:
     @classmethod
     def filter_oldest(cls, array):
         '''Método da classe que filtra por data mais antiga'''
-        # print('FILTER OLDEST CALLED', array)
         dates = cls.__dates_to_datetime(array)
-        # print('DATETIMES', dates)
         oldest = cls.__oldest_date(dates)
-        # print('OLDEST', oldest)
         oldest_str = oldest.strftime('%Y-%m-%d')
-        print('OLDEST STR', oldest_str)
         return oldest_str
+
+    @classmethod
+    def filter_closest(cls, array):
+        '''Método da classe que filtra por data mais próxima da atual'''
+        dates = cls.__dates_to_datetime(array)
+        closest = cls.__closest_date(dates)
+        closest_str = closest.strftime('%Y-%m-%d')
+        return closest_str
 
     def __dates_to_datetime(array):
         '''Método privado para transformar um
@@ -26,3 +30,12 @@ class CheckDate:
             if oldest > date:
                 oldest = date
         return oldest
+
+    def __closest_date(array):
+        now = datetime.now()
+        dates_dict = {
+            abs(now.timestamp() - date.timestamp()): date
+            for date in array
+        }
+        closest = dates_dict[min(dates_dict.keys())]
+        return closest
