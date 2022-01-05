@@ -1,6 +1,7 @@
-import csv
+# import csv
 import json
 import xml.etree.ElementTree as ET
+from inventory_report.importer.csv_importer import CsvImporter
 
 from inventory_report.reports.simple_report import SimpleReport
 
@@ -18,9 +19,11 @@ class Inventory:
         # Lendo arquivos do tipo csv
         if path.endswith(".csv"):
             data = []
-            with open(path, mode="r") as files:
-                file = csv.DictReader(files)
-                data = [row for row in file]
+            data = CsvImporter.import_data(path)
+            print(data)
+        #   with open(path, mode="r") as files:
+        #       file = csv.DictReader(files)
+        #       data = [row for row in file]
         # Lendo arquivos do tipo json
         elif path.endswith(".json"):
             with open(path) as files:
@@ -33,6 +36,8 @@ class Inventory:
         return Inventory._type_[type](data)
 
 # PARA TESTE
-# Inventory.import_data("inventory.csv", "simples")
+
+
+Inventory.import_data("inventory.csv", "simples")
 # Inventory.import_data("inventory.csv", "completo")
 # Inventory.import_data("inventory.json", "simples")
