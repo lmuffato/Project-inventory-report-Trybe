@@ -6,7 +6,7 @@ from datetime import datetime
 class SimpleReport:
     def generate(data):
         # Retona data atual
-        current_date = datetime.now().strftime("%Y/%M/%D")
+        current_date = str(datetime.today()).split()[0]
         manufacturing_date = []
         expiration_date = []
         company_name = []
@@ -19,61 +19,108 @@ class SimpleReport:
                 # e saretorna a data de validade mais próxima
                 expiration_date.append(company["data_de_validade"])
 
-        return (
+        result = (
             f"Data de fabricação mais antiga: {min(manufacturing_date)}\n"
             f"Data de validade mais próxima: {min(expiration_date)}\n"
             f"Empresa com maior quantidade de produtos estocados: "
             f"{max(company_name)}\n"
         )
+        print(current_date)
+        return result
 
 
 # PARA TESTE
 # SimpleReport.generate(
 #     [
 #         {
-#             "id": 1,
-#             "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP",
-#             "nome_da_empresa": "Forces of Nature",
-#             "data_de_fabricacao": "2020-07-04",
-#             "data_de_validade": "2023-02-09",
-#             "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
-#             "instrucoes_de_armazenamento": "in blandit ultrices enim",
+#             "id": "1",
+#             "nome_do_produto": "Nicotine Polacrilex",
+#             "nome_da_empresa": "Target Corporation",
+#             "data_de_fabricacao": "2020-02-18",
+#             "data_de_validade": "2022-09-17",
+#             "numero_de_serie": "CR25 1551 4467 2549 4402 1",
+#             "instrucoes_de_armazenamento": "instrucao 1",
 #         },
 #         {
-#             "id": 2,
-#             "nome_do_produto": "sodium ferric gluconate complex",
-#             "nome_da_empresa": "sanofi-aventis U.S. LLC",
-#             "data_de_fabricacao": "2020-05-31",
-#             "data_de_validade": "2023-01-17",
-#             "numero_de_serie": "SE95 2662 8860 5529 8299 2861",
-#             "instrucoes_de_armazenamento": "duis bibendum morbi",
+#             "id": "2",
+#             "nome_do_produto": "fentanyl citrate",
+#             "nome_da_empresa": "Target Corporation",
+#             "data_de_fabricacao": "2019-12-06",
+#             "data_de_validade": "2022-12-25",
+#             "numero_de_serie": "FR29 5951 7573 74OY XKGX 6CSG D20",
+#             "instrucoes_de_armazenamento": "instrucao 2",
 #         },
 #         {
-#             "id": 3,
-#             "nome_do_produto": "Dexamethasone Sodium Phosphate",
-#             "nome_da_empresa": "sanofi-aventis U.S. LLC",
-#             "data_de_fabricacao": "2019-09-13",
-#             "data_de_validade": "2023-02-13",
-#             "numero_de_serie": "BA52 2034 8595 7904 7131",
-#             "instrucoes_de_armazenamento": "morbi quis tortor id",
+#             "id": "3",
+#             "nome_do_produto": "NITROUS OXIDE",
+#             "nome_da_empresa": "Galena Biopharma",
+#             "data_de_fabricacao": "2019-12-22",
+#             "data_de_validade": "2023-11-07",
+#             "numero_de_serie": "CZ09 8588 0858 8435 9140 2695",
+#             "instrucoes_de_armazenamento": "instrucao 3",
 #         },
 #         {
-#             "id": 4,
-#             "nome_do_produto": "Uricum acidum, Benzoicum acidum",
-#             "nome_da_empresa": "Newton Laboratories",
-#             "data_de_fabricacao": "2019-11-08",
-#             "data_de_validade": "2019-11-25",
-#             "numero_de_serie": "FR38 9203 3060 400T QQ8B HHS0 Q46",
-#             "instrucoes_de_armazenamento": "velit eu est congue elementum",
+#             "id": "4",
+#             "nome_do_produto": "Norepinephrine Bitartrate",
+#             "nome_da_empresa": "Cantrell Drug Company",
+#             "data_de_fabricacao": "2019-12-24",
+#             "data_de_validade": "2024-08-19",
+#             "numero_de_serie": "MT04 VJPY 0772 3DCE K8U3 WIVL VV3K AEN",
+#             "instrucoes_de_armazenamento": "instrucao 4",
 #         },
 #         {
-#             "id": 5,
-#             "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP",
-#             "nome_da_empresa": "Forces of Nature",
-#             "data_de_fabricacao": "2020-07-04",
-#             "data_de_validade": "2023-02-09",
-#             "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
-#             "instrucoes_de_armazenamento": "in blandit ultrices enim",
+#             "id": "5",
+#             "nome_do_produto": "ACETAMINOPHEN, PHENYLEPHRINE HYDROCHLORIDE",
+#             "nome_da_empresa": "Moore Medical LLC",
+#             "data_de_fabricacao": "2020-04-14",
+#             "data_de_validade": "2024-01-14",
+#             "numero_de_serie": "LV23 ELDS 2GD5 X19P VCSI K",
+#             "instrucoes_de_armazenamento": "instrucao 5",
+#         },
+#         {
+#             "id": "6",
+#             "nome_do_produto": "Silicea Belladonna",
+#             "nome_da_empresa": "Cantrell Drug Company",
+#             "data_de_fabricacao": "2020-07-18",
+#             "data_de_validade": "2023-10-05",
+#             "numero_de_serie": "FR57 7414 7254 046O IHVX AV6L H71",
+#             "instrucoes_de_armazenamento": "instrucao 6",
+#         },
+#         {
+#             "id": "7",
+#             "nome_do_produto": "Spironolactone",
+#             "nome_da_empresa": "REMEDYREPACK",
+#             "data_de_fabricacao": "2020-07-17",
+#             "data_de_validade": "2022-11-18",
+#             "numero_de_serie": "SM28 B981 5118 903W JY0C 5KVO 3QD",
+#             "instrucoes_de_armazenamento": "instrucao 7",
+#         },
+#         {
+#             "id": "8",
+#             "nome_do_produto": "Aspirin",
+#             "nome_da_empresa": "Galena Biopharma",
+#             "data_de_fabricacao": "2020-02-22",
+#             "data_de_validade": "2023-03-14",
+#             "numero_de_serie": "KZ63 800H NM4B ZOWB YYUI",
+#             "instrucoes_de_armazenamento": "instrucao 8",
+#         },
+#         {
+#             "id": "9",
+#             "nome_do_produto": "eucalyptus globulus",
+#             "nome_da_empresa": "Target Corporation",
+#             "data_de_fabricacao": "2019-09-06",
+#             "data_de_validade": "2023-05-21",
+#             "numero_de_serie": "GT74 LHWJ FCXL JNQT ZCXM 4761 GWSP",
+#             "instrucoes_de_armazenamento": "instrucao 9",
+#         },
+#         {
+#             "id": "10",
+#             "nome_do_produto": "Titanium Dioxide",
+#             "nome_da_empresa": "Target Corporation",
+#             "data_de_fabricacao": "2019-12-08",
+#             "data_de_validade": "2022-12-08",
+#             "numero_de_serie": "FR29 5791 5333 58XR G4PR IG28 D08",
+#             "instrucoes_de_armazenamento": "instrucao 10",
 #         },
 #     ]
 # )

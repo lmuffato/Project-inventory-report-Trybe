@@ -12,7 +12,6 @@ class CompleteReport(SimpleReport):
         # Calcula a quantidade de vezes que o nome de uma empresa aparece na
         # lista fornecida
         products = Counter(product["nome_da_empresa"] for product in data)
-        print(products)
 
         # Formata a forma de exibição do nome da empresa e quantidade de vezes
         # que aparece
