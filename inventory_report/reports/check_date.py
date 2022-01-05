@@ -22,7 +22,6 @@ class CheckDate:
         '''Método privado para transformar um
         array de datas (string) em datetimes'''
         return [datetime.strptime(date, '%Y-%m-%d') for date in array]
-        # return [date for date in array]
 
     def __oldest_date(array):
         oldest = array[0]
@@ -32,6 +31,9 @@ class CheckDate:
         return oldest
 
     def __closest_date(array):
+        '''Método privado que retorna a data mais
+        próxima da data atual - inspirado na solução proposta em
+        www.geeksforgeeks.org/python-find-the-closest-date-from-a-list/'''
         now = datetime.now()
         dates_dict = {
             abs(now.timestamp() - date.timestamp()): date
