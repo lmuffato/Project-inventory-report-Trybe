@@ -1,4 +1,5 @@
 import csv
+import json
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
@@ -12,10 +13,15 @@ class Inventory:
                 list.append(value)
         return list
 
+    def read_json(path):
+        with open(path) as json_file:
+            return json.load(json_file)
+
     @classmethod
     def import_data(cls, path, report_type):
         readers = {
-            "csv": cls.read_csv
+            "csv": cls.read_csv,
+            "json": cls.read_json
         }
 
         reports = {
