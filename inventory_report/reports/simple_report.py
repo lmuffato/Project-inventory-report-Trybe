@@ -6,10 +6,10 @@ from collections import Counter
 class SimpleReport:
     @staticmethod
     def generate(data: List):
-        today = datetime.now().strftime("%Y/%M/%D")
+        today = datetime.now()
 
         def nonExpired(date):
-            if date > today:
+            if datetime.fromisoformat(date) > today:
                 return True
             return False
 
