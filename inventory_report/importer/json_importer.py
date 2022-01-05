@@ -8,3 +8,5 @@ class JsonImporter(Importer):
             raise ValueError("Arquivo inválido")
         with open(fileName, 'r') as jsonFile:
             return json.load(jsonFile)
+
+# funcao
