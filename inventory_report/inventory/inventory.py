@@ -1,9 +1,7 @@
 import csv
 import json
 import xml.etree.ElementTree as ET
-
 from inventory_report.reports.simple_report import SimpleReport
-
 from inventory_report.reports.complete_report import CompleteReport
 
 
@@ -30,9 +28,9 @@ class Inventory:
         elif path.endswith(".xml"):
             root = ET.parse(path).getroot()
             data = [{x.tag: x.text for x in y} for y in root.findall("record")]
+        print(Inventory._type_[type](data))
         return Inventory._type_[type](data)
 
-# PARA TESTE
-# Inventory.import_data("inventory.csv", "simples")
-# Inventory.import_data("inventory.csv", "completo")
-# Inventory.import_data("inventory.json", "simples")
+
+#  PARA TESTE
+Inventory.import_data("inventory_report/data/inventory.json", "simples")
