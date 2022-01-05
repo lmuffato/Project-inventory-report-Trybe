@@ -34,4 +34,4 @@ class Inventory:
 
 #  PARA TESTE
 Inventory.import_data("inventory_report/data/inventory.json", "simples")
-#Minha versão
+# Minha versão
