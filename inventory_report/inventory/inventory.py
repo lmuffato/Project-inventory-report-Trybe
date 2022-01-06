@@ -19,7 +19,8 @@ class Inventory:
             if 'xml' in path:
                 reading = ET.parse(file).getroot()
                 data = [
-                    {elem.tag: elem.text for elem in child} for child in reading
+                    {elem.tag: elem.text for elem in child}
+                    for child in reading
                     ]
             return data
 
