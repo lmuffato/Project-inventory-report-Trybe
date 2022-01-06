@@ -13,7 +13,7 @@ class SimpleReport:
         for value in dictData:
             valueDate = date.fromisoformat(value["data_de_validade"])
             currentDate = date.today()
-            if (valueDate > currentDate):
+            if valueDate > currentDate:
                 dates.append(valueDate)
         return min(dates)
 
