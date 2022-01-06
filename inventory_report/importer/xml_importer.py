@@ -4,9 +4,7 @@ from .importer import Importer
 
 class XmlImporter(Importer):
     def import_data(path):
-        if not path.endswith('.xml'):
-            raise ValueError('Invalid file extension')
-        else:
+        if path.endswith('.xml'):
             tree = ET.parse(path)
             dataset = tree.getroot()
             data = [
@@ -17,3 +15,5 @@ class XmlImporter(Importer):
                 for record in dataset
             ]
             return data
+        else:
+            raise ValueError('Arquivo inválido')
