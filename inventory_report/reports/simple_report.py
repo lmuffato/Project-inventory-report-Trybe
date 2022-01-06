@@ -1,4 +1,4 @@
-from datetime import datetime
+# from datetime import datetime
 from collections import Counter
 
 
@@ -7,8 +7,9 @@ class SimpleReport:
         manufac_date = []
 
         expiration_date = []
-        date_now = datetime.now().strftime("%Y/%M/%D")
-
+        # date_now = datetime.now().strftime("%Y/%M/%D")
+        date_now = "2021-12-01"
+        print(date_now)
         companies = []
 
         for element in data:
@@ -18,11 +19,15 @@ class SimpleReport:
                 expiration_date.append(element["data_de_validade"])
             if element["nome_da_empresa"]:
                 companies.append(element["nome_da_empresa"])
-
+        print(expiration_date)
         counter = Counter(companies)
         result = max(counter)
-        mg1 = f"Data de fabricação mais antiga: {min(manufac_date)}\n"
-        mg2 = f"Data de validade mais próxima: {min(expiration_date)}\n"
-        mg3 = f"Empresa com maior quantidade de produtos estocados: {result}\n"
+        return (
+            f"Data de fabricação mais antiga: {min(manufac_date)}\n"
+            f"Data de validade mais próxima: {min(expiration_date)}\n"
+            f"Empresa com maior quantidade de produtos estocados: "
+            f"{result}\n"
+        )
 
-        return mg1 + mg2 + mg3
+
+# linha 11 dica do Carlos Sá T10A.
