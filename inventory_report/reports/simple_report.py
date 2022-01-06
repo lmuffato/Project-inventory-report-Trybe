@@ -1,4 +1,4 @@
-# from datetime import datetime
+from datetime import datetime
 from collections import Counter
 
 
@@ -7,9 +7,7 @@ class SimpleReport:
         manufac_date = []
 
         expiration_date = []
-        # date_now = datetime.now().strftime("%Y/%M/%D")
-        date_now = "2021-12-01"
-        print(date_now)
+        date_now = datetime.now().strftime("%Y-%m-%d")
         companies = []
 
         for element in data:
@@ -28,6 +26,3 @@ class SimpleReport:
             f"Empresa com maior quantidade de produtos estocados: "
             f"{result}\n"
         )
-
-
-# linha 11 dica do Carlos Sá T10A.
