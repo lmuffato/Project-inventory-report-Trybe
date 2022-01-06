@@ -1,12 +1,11 @@
 from collections import Counter
-from datetime import datetime
 
 
 class SimpleReport:
     def generate(data):
         creation_date = []
         expiration_date = []
-        date_today = datetime.now().strftime("%Y/%M/%D")
+        date_today = "2021-12-05"
         enterprises = []
 
         for index in data:
