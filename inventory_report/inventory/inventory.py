@@ -1,18 +1,26 @@
 import csv
+import json
 
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
 
 class Inventory:
-    def import_data(path, report_type):
-        with open(path, mode='r') as csv_file:
-            report_data = csv.DictReader(csv_file)
-            report = [row for row in report_data]
+    def read_file(path):
+        with open(path) as file:
+            if('csv' in path):
+                csv_file = csv.DictReader(file, delimiter=",", quotechar='"')
+                header, *data = csv_file
+                data = [header, *data]
+            if('json' in path):
+                data = json.load(file)
+            return data
 
+    def import_data(path, report_type):
+        report_data = Inventory.read_file(path)
         if report_type == 'simples':
-            return SimpleReport.generate(report)
+            return SimpleReport.generate(report_data)
         if report_type == 'completo':
-            return CompleteReport.generate(report)
+            return CompleteReport.generate(report_data)
         else:
             raise ValueError('Invalid report type')
