@@ -66,7 +66,9 @@ class CompleteReport(SimpleReport):
             for company in company_names
         )
 
-        return "\n".join(quantity_products)
+        # http://devfuria.com.br/python/convertendo-listas/
+
+        return "\n".join(quantity_products.sort(reverse=True))
 
 
 # print(CompleteReport.generate(teste))

@@ -58,7 +58,7 @@ class SimpleReport:
 
     def find_first_validate_date(reports):
         current_date = datetime.now()
-        formatted_date = current_date.strftime("%Y/%m/%d")
+        formatted_date = current_date.strftime("%Y-%m-%d")
         valid_dates = [
             date
             for date in reports
