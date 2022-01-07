@@ -5,6 +5,7 @@ from inventory_report.reports.check_date import CheckDate
 class CompleteReport(Report):
     @classmethod
     def generate(cls, data):
+        print(data)
         fabrication_dates = [row["data_de_fabricacao"] for row in data]
         oldest_fabrication = CheckDate.filter_oldest(fabrication_dates)
 
@@ -12,7 +13,10 @@ class CompleteReport(Report):
         closer_expiration = CheckDate.filter_closest(expiration_dates)
 
         companies_list = [row["nome_da_empresa"] for row in data]
-        companies_set = set(companies_list)
+        companies_set = []
+        for company in companies_list:
+            if company not in companies_set:
+                companies_set.append(company)
         greatest_company = cls.filter_company(companies_list)
 
         final_report = (
@@ -27,6 +31,5 @@ class CompleteReport(Report):
         for company in companies_set:
             report += f"- {company}: {companies_list.count(company)}\n"
         final_report += report
-        print(final_report)
 
         return final_report
