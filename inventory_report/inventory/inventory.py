@@ -14,3 +14,6 @@ class Inventory(CompleteReport, SimpleReport):
                 return SimpleReport.generate(reports)
             elif report_type == "completo":
                 return CompleteReport.generate(reports)
+
+# print(Inventory.import_data
+# ("inventory_report/data/inventory.csv", "completo"))

@@ -1,4 +1,6 @@
 from inventory_report.reports.simple_report import SimpleReport
+from collections import OrderedDict
+
 # from simple_report import SimpleReport
 
 # teste = [
@@ -23,7 +25,7 @@ from inventory_report.reports.simple_report import SimpleReport
 #     {
 #         "id": 3,
 #         "nome_do_produto": "Dexamethasone Sodium Phosphate",
-#         "nome_da_empresa": "sanofi-aventis U.S. LLC",
+#         "nome_da_empresa": "Newton Laboratories",
 #         "data_de_fabricacao": "2019-09-13",
 #         "data_de_validade": "2023-02-13",
 #         "numero_de_serie": "BA52 2034 8595 7904 7131",
@@ -55,20 +57,28 @@ class CompleteReport(SimpleReport):
         return f"{report}\n{company_quantity_products}\n"
 
     def quantityProduct(reports):
-        company_names = set(report["nome_da_empresa"] for report in reports)
-
         occurrences_company_names = [
             report["nome_da_empresa"] for report in reports
         ]
 
+        ocurrences_quantity_products = [
+            (company, occurrences_company_names.count(company))
+            for company in occurrences_company_names
+        ]
+
+        # https://www.youtube.com/watch?v=1T_bxlFIshI
+
         quantity_products = list(
-            f"- {company}: {occurrences_company_names.count(company)}"
-            for company in company_names
+            OrderedDict.fromkeys(ocurrences_quantity_products)
         )
+
+        format_quantity_products = [
+            f"- {product[0]}: {product[1]}" for product in quantity_products
+        ]
 
         # http://devfuria.com.br/python/convertendo-listas/
 
-        return "\n".join(quantity_products.sort(reverse=True))
+        return "\n".join(format_quantity_products)
 
 
 # print(CompleteReport.generate(teste))
