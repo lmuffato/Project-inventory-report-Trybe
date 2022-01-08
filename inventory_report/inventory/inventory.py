@@ -7,18 +7,17 @@ from inventory_report.importer.xml_importer import XmlImporter
 
 
 class Inventory:
+    extensions = {
+        '.xml': XmlImporter,
+        '.json': JsonImporter,
+        '.csv': CsvImporter
+    }
+
     def import_data(path, type):
         importer = None
-        extensions = {
-            '.xml': XmlImporter,
-            '.json': JsonImporter,
-            '.csv': CsvImporter
-        }
-        if(type not in ['simples', 'completo']):
-            raise 'Must enter [simples, completo]'
 
         try:
-            importer = extensions[Path(path).suffix]
+            importer = Inventory.extensions[Path(path).suffix]
             path = path
         except KeyError:
             raise 'The file must be json, xml or csv'

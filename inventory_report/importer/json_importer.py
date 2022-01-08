@@ -10,7 +10,7 @@ class JsonImporter(Importer):
         ext = Path(path).suffix
         if(ext != '.json'):
             raise ValueError('Arquivo inválido')
-    
+
     def import_data(path):
         JsonImporter.check_extension(path)
 
@@ -18,4 +18,3 @@ class JsonImporter(Importer):
         with(open(path)) as x:
             out = x.read()
         return JsonImporter.decoder.decode(out)
-    
