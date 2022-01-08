@@ -1,3 +1,4 @@
+# Feito por minha dupla Nathalia Zebral
 from inventory_report.importer.importer import Importer
 import csv
 

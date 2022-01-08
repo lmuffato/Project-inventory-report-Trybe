@@ -1,3 +1,4 @@
+# Feito por minha dupla Nathalia Zebral
 from abc import ABC, abstractmethod
 
 
