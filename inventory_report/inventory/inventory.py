@@ -1,22 +1,37 @@
-from inventory_report.reports.simple_report import SimpleReport
-from inventory_report.reports.complete_report import CompleteReport
+import csv
+import json
+import xml.etree.ElementTree as ET
 
-from inventory_report.importer.csv_importer import CsvImporter
-from inventory_report.importer.json_importer import JsonImporter
-from inventory_report.importer.xml_importer import XmlImporter
+from inventory_report.reports.complete_report import CompleteReport
+from inventory_report.reports.simple_report import SimpleReport
 
 
 class Inventory:
-    @classmethod
-    def import_data(cls, path, type):
-        if path.endswith("csv"):
-            items = CsvImporter.import_csv_file(path)
-        elif path.endswith("json"):
-            items = JsonImporter.import_json_file(path)
-        else:
-            items = XmlImporter.import_xml_file(path)
+    report_functions = {
+        "simples": SimpleReport.generate,
+        "completo": CompleteReport.generate,
+    }
 
-        if type == "simples":
-            return SimpleReport.generate(items)
-        elif type == "completo":
-            return CompleteReport.generate(items)
+    def import_data(file_path, report_type):
+        content = []
+
+        if file_path.endswith(".csv"):
+            with open(file_path) as csvfile:
+                reader = csv.DictReader(csvfile)
+                content = [row for row in reader]
+
+        elif file_path.endswith(".json"):
+            with open(file_path, "r") as file:
+                content = json.load(file)
+
+        elif file_path.endswith(".xml"):
+            tree = ET.parse(file_path)
+            root = tree.getroot()
+            content = [
+                {el.tag: el.text for el in record}
+                for record in root.findall("record")
+            ]
+
+        else:
+            raise ValueError("Arquivo inválido")
+        return Inventory.report_functions[report_type](content)
