@@ -21,4 +21,4 @@ class Inventory:
         data = extension[extensao](path)
         result = report_types[report_type](data)
         return result
-# conteudo do projeto desenvolvido em pai-programming
+# adicionando conteudo na minha branch
