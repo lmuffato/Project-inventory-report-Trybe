@@ -8,7 +8,7 @@ class XmlImporter:
             root = tree.getroot()
             result = [
               {
-                elem.tag: elem.text for elem in record
+                product.tag: product.text for product in record
               }
               for record in root
             ]
