@@ -4,7 +4,7 @@ from datetime import datetime
 
 class SimpleReport:
     def generate(data):
-        curr_date = datetime.now().strftime('%Y-%M-%D')
+        curr_date = datetime.now().strftime('%Y-%m-%d')
         manufacture_date = [item['data_de_fabricacao'] for item in data]
         expiration_date = [item['data_de_validade'] for item in data
                            if item['data_de_validade'] > curr_date]
