@@ -18,7 +18,7 @@ class Inventory:
             raise 'Must enter [simples, completo]'
 
         try:
-            importer = extensions[Path(path).suffix]()
+            importer = extensions[Path(path).suffix]
             path = path
         except KeyError:
             raise 'The file must be json, xml or csv'

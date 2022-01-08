@@ -1,10 +1,17 @@
 from inventory_report.importer.importer import Importer
 import xml.etree.ElementTree as et
+from pathlib import Path
 
 
 class XmlImporter(Importer):
+    def check_extension(path):
+        ext = Path(path).suffix
+        if(ext != '.xml'):
+            raise ValueError('Arquivo inválido')
 
-    def import_data(self, path):
+    def import_data(path):
+        XmlImporter.check_extension(path)
+
         tree = et.parse(path)
         root = tree.getroot()
         out = []
