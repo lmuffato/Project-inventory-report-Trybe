@@ -1,5 +1,4 @@
-import xmltodict
-import json
+import xml.etree.ElementTree as ET
 
 from inventory_report.importer.importer import Importer
 
@@ -9,11 +8,15 @@ class XmlImporter(Importer):
         extension_type = path.split(".")[1]
         if (extension_type == "xml"):
             with open(path) as file_reports:
-                string_from_xml = xmltodict.parse(file_reports.read())
-                file_reports.close()
-                dict_from_string = json.dumps(string_from_xml)
-                reports = json.loads(dict_from_string)["dataset"]["record"]
-                return reports
+                from_xml = ET.parse(file_reports).getroot()
+                list_from_xml = []
+                index = 0
+                for xml in from_xml:
+                    list_from_xml.append({})
+                    for element in xml:
+                        list_from_xml[index][element.tag] = element.text
+                    index += 1
+                return list_from_xml
         else:
             raise ValueError("Arquivo inválido")
 

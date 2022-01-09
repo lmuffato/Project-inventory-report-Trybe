@@ -1,8 +1,9 @@
-from inventory_report.reports.simple_report import SimpleReport
-from inventory_report.reports.complete_report import CompleteReport
+import xml.etree.ElementTree as ET
 import csv
 import json
-import xmltodict
+
+from inventory_report.reports.simple_report import SimpleReport
+from inventory_report.reports.complete_report import CompleteReport
 
 
 class Inventory(CompleteReport, SimpleReport):
@@ -41,15 +42,19 @@ class Inventory(CompleteReport, SimpleReport):
 
     def import_data_xml(path, report_type):
         with open(path) as file_reports:
-            string_from_xml = xmltodict.parse(file_reports.read())
-            file_reports.close()
-            dict_from_string = json.dumps(string_from_xml)
-            reports = json.loads(dict_from_string)["dataset"]["record"]
+            from_xml = ET.parse(file_reports).getroot()
+            list_from_xml = []
+            index = 0
+            for xml in from_xml:
+                list_from_xml.append({})
+                for element in xml:
+                    list_from_xml[index][element.tag] = element.text
+                index += 1
             if report_type == "simples":
-                return SimpleReport.generate(reports)
+                return SimpleReport.generate(list_from_xml)
             elif report_type == "completo":
-                return CompleteReport.generate(reports)
+                return CompleteReport.generate(list_from_xml)
 
 
-# print(Inventory.import_data
-# ("inventory_report/data/inventory.csv", "completo"))
+# print(Inventory.import_data_xml
+# ("inventory_report/data/inventory.xml", "completo"))
