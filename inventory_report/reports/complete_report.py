@@ -16,3 +16,5 @@ class CompleteReport(SimpleReport):
         return (
             f"{reporte_simples}\n"
             f"{resultado}")
+
+# ultimo commit para funcionamento do avaliador
