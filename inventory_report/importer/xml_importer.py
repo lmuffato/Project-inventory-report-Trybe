@@ -13,5 +13,4 @@ class XmlImporter(Importer):
                     {elem.tag: elem.text for elem in sub_elem}
                     for sub_elem in root
                 ]
-        else:
-            raise ValueError('inválido')
+        raise ValueError('inválido')

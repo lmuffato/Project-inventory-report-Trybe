@@ -8,5 +8,4 @@ class CsvImporter(Importer):
         if data.endswith('.csv'):
             with open(data) as file:
                 return list(csv.DictReader(file))
-        else:
-            raise ValueError('inválido')
+        raise ValueError('inválido')
