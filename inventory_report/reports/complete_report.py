@@ -1,3 +1,4 @@
+# codigo feio pela minha dupla.
 from inventory_report.reports.report import Report
 from inventory_report.reports.check_date import CheckDate
 

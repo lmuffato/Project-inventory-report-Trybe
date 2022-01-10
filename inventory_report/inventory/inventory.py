@@ -1,3 +1,5 @@
+# para o melhor entendimento dos requisitos e vizualizacao dos codigos,
+# fiz uma pesquisa dentre varios projetos de colegas da turma
 import csv
 import xml.etree.ElementTree as ET
 import json
