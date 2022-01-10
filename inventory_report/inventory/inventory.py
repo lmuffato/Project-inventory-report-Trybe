@@ -2,11 +2,13 @@ import csv
 import json
 
 from inventory_report.reports.simple_report import SimpleReport
+from inventory_report.reports.complete_report import CompleteReport
 
 
 class Inventory:
     r_func = {
         "simples": SimpleReport.generate,
+        "completo": CompleteReport.generate,
     }
 
     def import_data(file_path, report_type):
