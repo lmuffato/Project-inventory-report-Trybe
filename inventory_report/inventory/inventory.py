@@ -20,5 +20,5 @@ class Inventory:
             return CsvImporter.import_data(src)
         elif src.endswith('.json'):
             return JsonImporter.import_data(src)
-        elif path.endswith('.xml'):
-            return XmlImporter.import_data(path)
+        elif src.endswith('.xml'):
+            return XmlImporter.import_data(src)
