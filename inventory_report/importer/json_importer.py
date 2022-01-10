@@ -8,4 +8,4 @@ class JsonImporter(Importer):
         if data.endswith('.json'):
             with open(data) as file:
                 return json.load(file)
-        raise ValueError('inválido')
+        raise ValueError('Arquivo inválido')

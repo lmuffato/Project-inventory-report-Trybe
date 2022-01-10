@@ -22,3 +22,4 @@ class Inventory:
             return JsonImporter.import_data(src)
         elif src.endswith('.xml'):
             return XmlImporter.import_data(src)
+        raise ValueError('Arquivo inválido')
