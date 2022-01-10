@@ -2,7 +2,7 @@ import csv
 import json
 import xml.etree.ElementTree as ET
 from inventory_report.reports.simple_report import SimpleReport
-from inventory_report.reports.complete_report import CompleteReport
+from inventory_report.reports.complete_report import CompleteReport  # .
 
 
 class Inventory:
