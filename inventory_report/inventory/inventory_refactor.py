@@ -1,17 +1,26 @@
-# from inventory.inventory_iterator import InventoryIterator
+from inventory_report.reports.complete_report import CompleteReport
+from inventory_report.reports.simple_report import SimpleReport
+
+from inventory_report.inventory.inventory_iterator import InventoryIterator
 
 
-# class InventoryRefactor:
-#     def __init__(self, file_name, importer):
-#         self.importer = importer
-#         self.file_name = file_name
+class InventoryRefactor:
+    def __init__(self, importer):
+        self.importer = importer
+    
 
-#     data = {}
+    __report_functions = {
+        "simples": SimpleReport.generate,
+        "completo": CompleteReport.generate,
+    }
 
-#     def import_data(self):
-#         return self.importer.import_data(self.file_name)
+
+    data = {}
+
+    def import_data(self, file_name, type):
+        self.importer.import_data(file_name)
+        return InventoryRefactor.__report_functions[type](list)
 
 
-#     def __iter__(self):
-#         data = InventoryIterator(self.import_data())
-#         return
+    def __iter__(self):
+        return InventoryIterator(self.data)
