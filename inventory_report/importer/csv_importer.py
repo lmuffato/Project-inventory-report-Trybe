@@ -13,5 +13,3 @@ class CsvImporter(Importer):
                 return data
             else:
                 raise ValueError("Arquivo inválido")
-
-# Carol
