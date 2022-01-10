@@ -23,3 +23,5 @@ class Inventory:
 
         if type == 'completo':
             return CompleteReport.generate(data)
+
+# add minha branch ao projeto
