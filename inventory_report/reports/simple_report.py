@@ -3,7 +3,7 @@ from datetime import datetime
 
 class SimpleReport:
     def generate(list):
-        actual_date = datetime.now().strftime('%Y/%M/%D')
+        actual_date = datetime.now().strftime('%Y-%m-%d')
 
         manufacturing_date = [item['data_de_fabricacao'] for item in list]
 

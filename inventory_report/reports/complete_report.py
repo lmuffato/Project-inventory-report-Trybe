@@ -3,7 +3,8 @@ from collections import Counter
 
 
 class CompleteReport(SimpleReport):
-    def generate(list):
+    @classmethod
+    def generate(cls, list):
         simple_report = SimpleReport.generate(list)
 
         stock_counter = Counter(item['nome_da_empresa'] for item in list)
