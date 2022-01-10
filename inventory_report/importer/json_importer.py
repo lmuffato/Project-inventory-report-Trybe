@@ -1,5 +1,6 @@
 # para o melhor entendimento dos requisitos e vizualizacao dos codigos.
 # fiz uma pesquisa dentre varios projetos de colegas da turma.
+# Feito por minha dupla Nathalia Zebral
 from inventory_report.importer.importer import Importer
 import json
 
