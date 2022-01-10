@@ -1,7 +1,8 @@
+from .importer import Importer
 import xml.etree.ElementTree as ElementTree
 
 
-class XmlImporter:
+class XmlImporter(Importer):
     @staticmethod
     def import_data(data):
         if data.endswith('.xml'):
@@ -13,4 +14,4 @@ class XmlImporter:
                     for sub_elem in root
                 ]
         else:
-            f'invalido: {data}'
+            raise ValueError('inválido')
