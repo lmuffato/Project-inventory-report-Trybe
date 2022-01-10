@@ -17,5 +17,5 @@ class Inventory:
     def read_file(cls, src):
         if src.endswith('.csv'):
             return CsvImporter.import_data(src)
-        elif path.endswith('.json'):
+        elif src.endswith('.json'):
             return JsonImporter.import_data(src)
