@@ -14,6 +14,6 @@ class InventoryIterator:
         except IndexError:
             raise StopIteration()
 
-            return value
+        return value
 
 
