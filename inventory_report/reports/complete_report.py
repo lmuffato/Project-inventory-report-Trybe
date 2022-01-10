@@ -2,6 +2,9 @@ from inventory_report.reports.simple_report import SimpleReport
 
 
 class CompleteReport(SimpleReport):
+    def __init__(self, stock):
+        self.stock = stock
+
     @classmethod
     def generate(self, stock):
         return self.generate_complete_report(stock)

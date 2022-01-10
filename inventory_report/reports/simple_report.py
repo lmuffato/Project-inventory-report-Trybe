@@ -2,9 +2,12 @@ from inventory_report.reports.stock_utils import StockUtils
 
 
 class SimpleReport(StockUtils):
+    def __init__(self, stock):
+        self.stock = stock
+
     @classmethod
-    def generate(self, stock):
-        return self.generate_report(stock)
+    def generate(cls, stock):
+        return cls.generate_report(stock)
 
     def generate_report(stock):
         oldest_date = SimpleReport.get_oldest_manufacture_date(
