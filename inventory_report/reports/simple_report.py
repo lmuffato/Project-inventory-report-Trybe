@@ -2,6 +2,7 @@ from collections import Counter
 
 
 class SimpleReport:
+    # should return a string formatted as a report.
     def generate(data):
         data_de_fabricacao = []
 
