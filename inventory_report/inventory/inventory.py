@@ -18,4 +18,4 @@ class Inventory:
         if src.endswith('.csv'):
             return CsvImporter.import_data(src)
         elif path.endswith('.json'):
-            return JsonImporter.import_data(path)
+            return JsonImporter.import_data(src)
