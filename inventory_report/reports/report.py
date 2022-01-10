@@ -1,3 +1,4 @@
+# Feito por Renan Oliveira
 from abc import ABC, abstractmethod
 from statistics import mode
 
