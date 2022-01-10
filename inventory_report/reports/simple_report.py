@@ -1,4 +1,5 @@
 from collections import Counter
+from datetime import datetime
 
 
 class SimpleReport:
@@ -6,7 +7,7 @@ class SimpleReport:
         m_date = []
 
         expiration_date = []
-        date_now = '2022-01-01'
+        date_now = str(datetime.today()).split()[0]
         comp = []
 
         for element in data:
