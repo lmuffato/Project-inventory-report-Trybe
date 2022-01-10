@@ -51,4 +51,8 @@ class SimpleReport:
             f'Data de fabricação mais antiga: {order}\n'
             f'Data de validade mais próxima: {nearest}\n'
             f'Empresa com maior quantidade de produtos estocados: {company}\n'
+<<<<<<< HEAD
         )
+=======
+        )
+>>>>>>> paulovitorInventoryReport

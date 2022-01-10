@@ -7,4 +7,8 @@ class CsvImporter(Importer):
     def import_data(cls, path):
         if not path.endswith('.csv'):
             raise ValueError('Arquivo inválido')
+<<<<<<< HEAD
         return FormatTypes.type_csv(path)
+=======
+        return FormatTypes.type_csv(path)
+>>>>>>> paulovitorInventoryReport

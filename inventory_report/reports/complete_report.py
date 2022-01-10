@@ -23,4 +23,8 @@ class CompleteReport(SimpleReport):
         return (
             f'{simple_report}\n'
             f'{all_companies}\n'
+<<<<<<< HEAD
         )
+=======
+        )
+>>>>>>> paulovitorInventoryReport
