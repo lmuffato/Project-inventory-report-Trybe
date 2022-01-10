@@ -3,6 +3,7 @@ import collections
 
 
 class SimpleReport:
+    @staticmethod
     def generate(file_dict):
         agora = datetime.date.today()
         fabricacao = agora
