@@ -1,40 +1,23 @@
-import csv
-import json
-import xml.etree.ElementTree as ET
-from inventory_report.reports.simple_report import SimpleReport
+import os
+from inventory_report.importer.xml_importer import XmlImporter
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.csv_importer import CsvImporter
 from inventory_report.reports.complete_report import CompleteReport
+from inventory_report.reports.simple_report import SimpleReport
 
 
 class Inventory:
-    def import_data(path, _type):
-        with open(path, 'r') as file:
-            reader = csv.DictReader(file)
-            data = [row for row in reader]
-            return data
-
-    def import_json(path, _type):
-        with open(path, 'r') as file:
-            return json.load(file)
-
-    def import_xml(path, _type):
-        with open(path, 'r') as file:
-            tree = ET.parse(file)
-            root = tree.getroot()
-            data = [
-                {el.tag: el.text for el in record}
-                for record in root.findall('record')
-            ]
-            return data
-
-    @classmethod
-    def import_data(cls, path, type):
-        list = []
-        if path.endswith('.csv'):
-            list = cls.import_csv(path, type)
-        if path.endswith('.json'):
-            list = cls.import_json(path, type)
-        if path.endswith('.xml'):
-            list = cls.import_xml(path, type)
-        if type == 'completo':
-            return CompleteReport.generate(list)
-        return SimpleReport.generate(list)
+    def import_data(path, report_type):
+        _nome, extensao = os.path.splitext(path)
+        report_types = {
+            "simples": SimpleReport.generate,
+            "completo": CompleteReport.generate,
+        }
+        extension = {
+            ".csv": CsvImporter.import_data,
+            ".json": JsonImporter.import_data,
+            ".xml": XmlImporter.import_data,
+        }
+        data = extension[extensao](path)
+        result = report_types[report_type](data)
+        return result
