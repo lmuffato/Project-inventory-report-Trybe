@@ -52,4 +52,4 @@ class Inventory():
             return 'Incorrect Path'
 
         result = TypesReturn.type_return(list_prod, type)
-        return 
+        return result
