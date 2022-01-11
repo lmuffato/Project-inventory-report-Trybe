@@ -18,5 +18,3 @@ class XmlImporter(Importer):
             root = tree.getroot()
             elements = root.findall("record")
             return list(map(parse, elements))
-
-# finish later
