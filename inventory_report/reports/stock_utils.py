@@ -40,7 +40,12 @@ class StockUtils:
     def get_biggest_inventory(stock, str_key):
         return max(StockUtils.get_stock_count(stock, str_key))
 
+
 # Source:
 # Funções lambda:
 # http://www.dsc.ufcg.edu.br/~pet/jornal/maio2013/materias/tutoriais.html
-#
+# https://medium.com/@otaviobn/entendendo-as-funções-lambda-no-python-cbe3c5abb179
+# Objeto datetime:
+# https://docs.python.org/3/library/datetime.html
+# Python built-in methods:
+# https://www.tutorialsteacher.com/python/builtin-methods

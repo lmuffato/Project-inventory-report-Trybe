@@ -29,6 +29,8 @@ class SimpleReport(StockUtils):
 # Source:
 # Sobre classmethod
 # https://python-reference.readthedocs.io/en/latest/docs/functions/classmethod.html
+# https://www.tutorialsteacher.com/python/classmethod-decorator
 # Documentação Python
 # https://docs.python.org/3/library/functions.html#classmethod
-# https://www.tutorialsteacher.com/python/classmethod-decorator
+# Sobre herança:
+# https://algoritmosempython.com.br/cursos/programacao-python/heranca/

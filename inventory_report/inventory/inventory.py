@@ -22,3 +22,12 @@ class Inventory:
         if type == 'completo':
             return CompleteReport.generate(report)
     pass
+
+# Source:
+# Sobre classmethod
+# https://python-reference.readthedocs.io/en/latest/docs/functions/classmethod.html
+# https://www.tutorialsteacher.com/python/classmethod-decorator
+# Documentação Python
+# https://docs.python.org/3/library/functions.html#classmethod
+# Sobre herança:
+# https://algoritmosempython.com.br/cursos/programacao-python/heranca/
