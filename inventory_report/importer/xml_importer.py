@@ -5,8 +5,8 @@ from inventory_report.importer.importer import Importer
 class XmlImporter(Importer):
     def import_data(file_path):
         if file_path.endswith(".xml"):
-            tree = ET.parse(file_path)
-            root = tree.getroot()
+            treee = ET.parse(file_path)
+            root = treee.getroot()
             return [
                 {el.tag: el.text for el in record}
                 for record in root.findall("record")
