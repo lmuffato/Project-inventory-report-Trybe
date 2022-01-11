@@ -5,20 +5,20 @@ from ..importer.xml_importer import XmlImporter
 from ..importer.json_importer import JsonImporter
 
 
-def report_type(type, response):
-    if type == "simples":
-        return SimpleReport.generate(response)
-    if type == "completo":
-        return CompleteReport.generate(response)
-
-
 class Inventory:
-    def import_data(path, type):
+    @classmethod
+    def import_data(cls, path, type):
         if "csv" in path:
             response = CsvImporter.import_data(path)
         elif "xml" in path:
             response = XmlImporter.import_data(path)
         elif "json" in path:
             response = JsonImporter.import_data(path)
-        return report_type(type, response)
+        return cls.report_type(type, response)
+
+    def report_type(type, report):
+        if type == 'simples':
+            return SimpleReport.generate(report)
+        if type == 'completo':
+            return CompleteReport.generate(report)
     pass
