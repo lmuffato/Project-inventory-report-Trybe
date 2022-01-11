@@ -2,9 +2,6 @@ from inventory_report.reports.stock_utils import StockUtils
 
 
 class SimpleReport(StockUtils):
-    def __init__(self, stock):
-        self.stock = stock
-
     @classmethod
     def generate(cls, stock):
         return cls.generate_report(stock)
