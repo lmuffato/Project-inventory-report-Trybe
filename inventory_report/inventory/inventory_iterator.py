@@ -9,5 +9,5 @@ class InventoryIterator:
             self._position += 1
 
             return result
-        
+
         raise StopIteration
