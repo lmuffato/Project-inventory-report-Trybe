@@ -24,3 +24,11 @@ class SimpleReport(StockUtils):
         ]
 
         return "".join(report_results)
+
+
+# Source:
+# Sobre classmethod
+# https://python-reference.readthedocs.io/en/latest/docs/functions/classmethod.html
+# Documentação Python
+# https://docs.python.org/3/library/functions.html#classmethod
+# https://www.tutorialsteacher.com/python/classmethod-decorator

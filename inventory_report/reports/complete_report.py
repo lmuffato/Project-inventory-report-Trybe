@@ -3,8 +3,8 @@ from inventory_report.reports.simple_report import SimpleReport
 
 class CompleteReport(SimpleReport):
     @classmethod
-    def generate(self, stock):
-        return self.generate_complete_report(stock)
+    def generate(cls, stock):
+        return cls.generate_complete_report(stock)
 
     def generate_complete_report(stock):
         total_stock_count = SimpleReport.get_stock_count(
@@ -27,3 +27,10 @@ class CompleteReport(SimpleReport):
         return simple_report + complete_report_message + "".join(
           detailed_report
         )
+
+# Source:
+# Sobre classmethod
+# https://python-reference.readthedocs.io/en/latest/docs/functions/classmethod.html
+# Documentação Python
+# https://docs.python.org/3/library/functions.html#classmethod
+# https://www.tutorialsteacher.com/python/classmethod-decorator
