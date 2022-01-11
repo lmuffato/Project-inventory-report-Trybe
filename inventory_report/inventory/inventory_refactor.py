@@ -8,7 +8,6 @@ class InventoryRefactor:
         self.importer = importer
         self.data = {}
 
-
     __report_functions = {
         "simples": SimpleReport.generate,
         "completo": CompleteReport.generate,
