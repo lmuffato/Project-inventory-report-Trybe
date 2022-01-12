@@ -10,3 +10,5 @@ class JsonImporter(Importer):
         with open(file) as json_file:
             data = json.load(json_file)
             return data
+
+# finish on weekend
