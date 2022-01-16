@@ -2,10 +2,6 @@ from datetime import datetime
 from collections import Counter
 
 
-# class CompanyQuantity:
-#     def
-
-
 class SimpleReport:
     def generate(products):
         current_date = datetime.now().strftime('%Y-%m-%d')
