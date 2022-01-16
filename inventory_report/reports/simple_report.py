@@ -8,7 +8,7 @@ from collections import Counter
 
 class SimpleReport:
     def generate(products):
-        current_date = datetime.now().strftime('%Y/%M/%D')
+        current_date = datetime.now().strftime('%Y-%m-%d')
         manufacturing_date = [product['data_de_fabricacao']
                               for product in products]
         expiration_date = [product['data_de_validade'] for product in products
