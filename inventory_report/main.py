@@ -6,27 +6,19 @@ from inventory_report.importer.xml_importer import XmlImporter
 
 
 def main():
-    # $ inventory_report <caminho_do_arquivo_input> <tipo_de_relatório>
-    # print('@@@@@@@@@@@@@2@@@@')
     if(len(sys.argv) != 3):
-        print('Verifique os argumentos', file=sys.stderr)
+        return print('Verifique os argumentos', file=sys.stderr)
 
-    fileType = sys.argv[1].split('.')[-1]
+    file_type = sys.argv[1].split('.')[-1]
+    path = sys.argv[1]
+    inventory_type = sys.argv[2]
 
-    if(fileType == 'json'):
-        relatorio = InventoryRefactor(JsonImporter)
-        relatorioFinal = relatorio.import_data(sys.argv[1], sys.argv[2])
-        # print(relatorioFinal + '------------------')
-        sys.stdout.write(relatorioFinal)
-    elif(fileType == 'csv'):
-        relatorio = InventoryRefactor(CsvImporter)
-        relatorioFinal = relatorio.import_data(sys.argv[1], sys.argv[2])
-        # print(relatorioFinal + '------------------')
-        sys.stdout.write(relatorioFinal)
-    elif(fileType == 'xml'):
-        relatorio = InventoryRefactor(XmlImporter)
-        relatorioFinal = relatorio.import_data(sys.argv[1], sys.argv[2])
-        # print(relatorioFinal + '------------------')
-        sys.stdout.write(relatorioFinal)
-
-    pass
+    if(file_type == 'json'):
+        report = InventoryRefactor(JsonImporter)
+        sys.stdout.write(report.import_data(path, inventory_type))
+    elif(file_type == 'csv'):
+        report = InventoryRefactor(CsvImporter)
+        sys.stdout.write(report.import_data(path, inventory_type))
+    elif(file_type == 'xml'):
+        report = InventoryRefactor(XmlImporter)
+        sys.stdout.write(report.import_data(path, inventory_type))

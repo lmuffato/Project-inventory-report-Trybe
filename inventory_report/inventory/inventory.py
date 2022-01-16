@@ -41,11 +41,11 @@ class Inventory:
     @classmethod
     def import_data(cls, path, type):
         products = []
-        fileType = path.split('.')[-1]
+        file_type = path.split('.')[-1]
 
-        if (fileType == 'csv'):
+        if (file_type == 'csv'):
             products = cls.get_products_from_csv(path)
-        elif (fileType == 'json'):
+        elif (file_type == 'json'):
             products = cls.get_products_from_json(path)
         else:
             products = cls.get_products_from_xml(path)

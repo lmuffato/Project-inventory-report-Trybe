@@ -5,9 +5,9 @@ from inventory_report.importer.importer import Importer
 class CsvImporter(Importer):
     def import_data(path):
         products = []
-        fileType = path.split('.')[-1]
+        file_type = path.split('.')[-1]
 
-        if (fileType != 'csv'):
+        if (file_type != 'csv'):
             raise(ValueError('Arquivo inválido'))
 
         with open(path) as file:

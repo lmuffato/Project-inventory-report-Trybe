@@ -5,9 +5,9 @@ from inventory_report.importer.importer import Importer
 class XmlImporter(Importer):
     def import_data(path):
         products = []
-        fileType = path.split('.')[-1]
+        file_type = path.split('.')[-1]
 
-        if (fileType != 'xml'):
+        if (file_type != 'xml'):
             raise(ValueError('Arquivo inválido'))
 
         with open(path) as file:

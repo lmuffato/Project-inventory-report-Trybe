@@ -5,9 +5,9 @@ from inventory_report.importer.importer import Importer
 class JsonImporter(Importer):
     def import_data(path):
         products = []
-        fileType = path.split('.')[-1]
+        file_type = path.split('.')[-1]
 
-        if (fileType != 'json'):
+        if (file_type != 'json'):
             raise(ValueError('Arquivo inválido'))
 
         with open(path) as file:
