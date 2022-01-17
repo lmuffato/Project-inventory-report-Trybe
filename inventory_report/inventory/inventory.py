@@ -1,5 +1,6 @@
 import csv
 import json
+import xmltodict
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
@@ -13,6 +14,11 @@ class Inventory():
             elif "json" in arq:
                 reader = file.read()
                 reader_file = json.loads(reader)
+            else:
+                string_xml = "".join(file)
+                reader_xml = xmltodict.parse(string_xml)
+                xml_convert_json = json.dumps(reader_xml)
+                reader_file = json.loads(xml_convert_json)["dataset"]["record"]
 
             for element in reader_file:
                 arr.append(element)
