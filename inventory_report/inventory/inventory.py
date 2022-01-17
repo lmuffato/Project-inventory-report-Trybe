@@ -2,6 +2,7 @@ import csv
 import json
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
+import xml.etree.ElementTree as e_tree
 
 
 class Inventory:
@@ -23,11 +24,23 @@ class Inventory:
         with open(path) as json_file:
             return json.load(json_file)
 
+    def read_xml(path):
+        with open(path) as xml_file:
+            if "xml" in path:
+                content = e_tree.fromstringlist(xml_file, parser=None)
+                response = [
+                  {it.tag: it.text for it in el} for el in content
+                ]
+                return response
+            else:
+                raise ValueError("Arquivo inválido")
+
     @classmethod
     def import_data(cls, path, type):
         readers = {
             "csv": cls.read_csv,
-            "json": cls.read_json
+            "json": cls.read_json,
+            "xml": cls.read_xml
         }
 
         reports = {
