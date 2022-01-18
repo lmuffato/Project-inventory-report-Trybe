@@ -5,6 +5,7 @@ from collections import Counter
 
 
 class CompleteReport(SimpleReport):
+    # Chamando uma classe dentro da outra (herança)
     def generate(stock):
         simple_report_result = SimpleReport.generate(stock)
         empresas = [empresa['nome_da_empresa'] for empresa in stock]
