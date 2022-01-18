@@ -23,5 +23,3 @@ class CompleteReport(SimpleReport):
             f"{SimpleReport.generate(file)}\n"
             f"{cpny_list}"
         )
-
-
