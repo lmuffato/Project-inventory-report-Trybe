@@ -8,7 +8,8 @@ class SimpleReport:
             product["data_de_validade"]
             for product in list
             if product["data_de_validade"] >= format_date
-        ].sort()
+        ]
+        date.sort()
         return date[0]
 
     def find_data_valid(list):
