@@ -47,3 +47,4 @@ class Inventory:
         else:
             result = CompleteReport.generate(content)
             return result
+            
