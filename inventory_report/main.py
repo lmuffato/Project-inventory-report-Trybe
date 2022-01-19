@@ -8,9 +8,9 @@ import sys
 def main():
     if(len(sys.argv) != 3):  # os argumentos passados pelo terminal devem ser 3
         return print('Verifique os argumentos', file=sys.stderr)
-    print(sys.stderr)
-    relatory_type = sys.argv[2]
-    file_path = sys.argv[1]
+
+    relatory_type = sys.argv[2]  # terceiro argumento
+    file_path = sys.argv[1]  # primeiro argumento
 
     if (sys.argv[1].endswith('.csv')):
         report = InventoryRefactor(CsvImporter)
@@ -28,7 +28,7 @@ def main():
 
 # Executar no terminal
 # Teste 01
-inventory_report 'inventory_report/data/inventory.csv' 'simples'
+# inventory_report 'inventory_report/data/inventory.csv' 'simples'
 # Teste 02
 # inventory_report 'inventory_report/data/inventory.json' 'simples'
 # Teste 03

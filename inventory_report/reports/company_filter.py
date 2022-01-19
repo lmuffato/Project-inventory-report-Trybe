@@ -6,4 +6,3 @@ class CompanyFilter:
           for empresa in stock
         ]
         return max(empresas)  # empresa em que o nome
-  
