@@ -26,7 +26,7 @@ class Inventory:
         tree = ET.parse(path)
         root = tree.getroot()  # Raiz, tag principal
         stock = [
-          {element.tag: element.text for element in record}
+          {elemento.tag: elemento.text for elemento in record}
           # Lista os elementos filhos de record: nome e texto
           for record in root.findall('record')  # buscar tags record
           # record, são as tags que contem os elementos com texto
