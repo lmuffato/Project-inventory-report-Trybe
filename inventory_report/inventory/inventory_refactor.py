@@ -9,7 +9,7 @@ class InventoryRefactor:
         self.data = []
 
     def __iter__(self):
-        return InventoryIterator(self.data)  # classe importada
+        return InventoryIterator(self.data)
 
     def import_data(self, path, type):
         self.data += self.importer.import_data(path)
@@ -45,3 +45,6 @@ class InventoryRefactor:
 # iterator = iter(instance)
 # first_item_instance = next(iterator)
 # print(first_item_instance)
+
+# Parte desse código teve referências do repositório abaixo:
+# https://github.com/tryber/sd-010-a-inventory-report/pull/110/files
