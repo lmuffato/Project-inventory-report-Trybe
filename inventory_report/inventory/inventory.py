@@ -34,3 +34,6 @@ class Inventory:
                 for record in dataset
             ]
             return cls.__send_report[report_type](data)
+
+
+print(Inventory.__send_report['completo'])
