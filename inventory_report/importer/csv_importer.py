@@ -5,9 +5,9 @@ from .importer import Importer
 class CsvImporter(Importer):
     def import_data(path):
         if path.endswith('.csv'):
-            with open(path, 'r') as csv_file:
-                csv_reader = csv.DictReader(csv_file)
-                data = [line for line in csv_reader]
+            with open(path, 'r') as file:
+                csv_file = csv.DictReader(file)
+                data = [line for line in csv_file]
                 return data
         else:
             raise ValueError('Arquivo inválido')
