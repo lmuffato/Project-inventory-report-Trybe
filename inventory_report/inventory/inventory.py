@@ -1,27 +1,30 @@
 import csv
 import json
 import xml.etree.ElementTree as ET
+
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
 
 class Inventory:
-    __send_report = {
-        'simples': SimpleReport.generate,
-        'completo': CompleteReport.generate,
-    }
+    def send_report(type):
+        report_type = {
+            'simples': SimpleReport.generate,
+            'completo': CompleteReport.generate,
+        }
+        return report_type[type]
 
     def import_data(cls, path, report_type):
         if path.endswith('.csv'):
-            with open(path, 'r') as file:
+            with open(path) as file:
                 csv_file = csv.DictReader(file)
                 data = [line for line in csv_file]
-                return cls.__send_report[report_type](data)
+                return cls.send_report(report_type)(data)
 
         elif path.endswith('.json'):
-            with open(path, 'r') as file:
+            with open(path) as file:
                 data = json.load(file)
-                return cls.__send_report[report_type](data)
+                return cls.send_report(report_type)(data)
 
         else:
             tree = ET.parse(path)
@@ -33,7 +36,4 @@ class Inventory:
                 }
                 for record in dataset
             ]
-            return cls.__send_report[report_type](data)
-
-
-print(Inventory.__send_report['completo'])
+            return cls.send_report(report_type)(data)
