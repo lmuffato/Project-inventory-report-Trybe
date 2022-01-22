@@ -2,27 +2,38 @@
 # testes ok
 import csv
 import json
-
-import xmltodict as xml
+import xml.etree.ElementTree as ET
 
 from inventory_report.reports.complete_report import CompleteReport as cr
 from inventory_report.reports.simple_report import SimpleReport as sr
 
 
 class Inventory:
-    @classmethod
-    def import_data(cls, path, type):
-        if path.endswith(".csv"):
-            with open(path, mode="r") as csv_file:
-                reader = csv.DictReader(csv_file)
-                data = [row for row in reader]
-        if path.endswith(".json"):
-            with open(path, "r", encoding="utf-8") as json_file:
-                data = json.load(json_file)
-        if path.endswith(".xml"):
-            with open(path) as xml_file:
-                file = xml.parse(xml_file.read())["dataset"]["record"]
-                data = [dict(item) for item in file]
-        if type == "simples":
-            return sr.generate(data)
-        return cr.generate(data)
+    __report_functions = {
+        "simples": sr.generate,
+        "completo": cr.generate,
+    }
+
+    def import_data(file, type):
+        list = []
+
+        if file.endswith(".csv"):
+            with open(file) as csvfile:
+                reader = csv.DictReader(csvfile)
+                list = [row for row in reader]
+
+        elif file.endswith(".json"):
+            with open(file, "r") as file:
+                list = json.load(file)
+
+        elif file.endswith(".xml"):
+            tree = ET.parse(file)
+            root = tree.getroot()
+            list = [
+                {el.tag: el.text for el in record}
+                for record in root.findall("record")
+            ]
+
+        else:
+            raise ValueError("Arquivo inválido")
+        return Inventory.__report_functions[type](list)
