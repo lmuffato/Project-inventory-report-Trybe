@@ -13,4 +13,5 @@ class CsvImporter(Importer):
             list = []
             for item in reader:
                 list.append(item)
+        print(list)
         return list
