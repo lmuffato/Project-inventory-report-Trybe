@@ -60,17 +60,17 @@ class Inventory:
         }
         return report_type[type]
 
-    def import_data(cls, path, report_type):
+    def import_data(path, report_type):
         if path.endswith('.csv'):
             with open(path) as file:
                 csv_file = csv.DictReader(file)
                 data = [line for line in csv_file]
-                return cls.send_report(report_type)(data)
+                return Inventory.send_report(report_type)(data)
 
         elif path.endswith('.json'):
             with open(path) as file:
                 data = json.load(file)
-                return cls.send_report(report_type)(data)
+                return Inventory.send_report(report_type)(data)
 
         else:
             tree = ET.parse(path)
@@ -82,4 +82,4 @@ class Inventory:
                 }
                 for record in dataset
             ]
-            return cls.send_report(report_type)(data)
+            return Inventory.send_report(report_type)(data)
