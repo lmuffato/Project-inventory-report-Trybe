@@ -3,6 +3,7 @@ import json
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from collections import Counter
+# Nao consegui importar as class, utilizei os mesmo metodos
 
 
 def find_date_factory(list):
