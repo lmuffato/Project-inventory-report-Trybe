@@ -5,6 +5,7 @@ from inventory_report.inventory.inventory_refactor import InventoryRefactor
 
 #  consultado  o pr de Nicholas Torres para concluir o exercício
 
+
 def main():
     if len(sys.argv) != 3:
         return sys.stderr.write("Verifique os argumentos")
