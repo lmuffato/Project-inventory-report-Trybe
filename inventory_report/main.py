@@ -3,6 +3,7 @@ from inventory_report.importer.csv_importer import CsvImporter
 from inventory_report.importer.json_importer import JsonImporter
 from inventory_report.inventory.inventory_refactor import InventoryRefactor
 
+#  consultado  o pr de Nicholas Torres para concluir o exercício
 
 def main():
     if len(sys.argv) != 3:
