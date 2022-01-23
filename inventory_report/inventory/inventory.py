@@ -36,9 +36,9 @@ class Inventory:
 
         return f"Produtos estocados por empresa: \n{result}"
 
-    def generate_complete(cls, list):
-        generate_simple_report = cls.generate_simple(list)
-        result = cls.return_company_stock_qty(list)
+    def generate_complete(list):
+        generate_simple_report = Inventory.generate_simple(list)
+        result = Inventory.return_company_stock_qty(list)
         return f"{generate_simple_report}\n{result}"
 
     def generate_simple(list):
