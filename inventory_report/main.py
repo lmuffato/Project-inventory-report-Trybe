@@ -16,3 +16,4 @@ def main():
         print(report.import_data(path, report_type), end="")
     else:
         report = InventoryRefactor(JsonImporter)
+        print(report.import_data(path, report_type), end="")
