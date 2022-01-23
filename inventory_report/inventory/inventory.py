@@ -53,10 +53,10 @@ class Inventory:
             f" de produtos estocados: {company_max_amount}\n"
         )
 
-    def send_report(cls, type):
+    def send_report(type):
         report_type = {
-            'simples': cls.generate_simple,
-            'completo': cls.generate_complete,
+            'simples': Inventory.generate_simple,
+            'completo': Inventory.generate_complete,
         }
         return report_type[type]
 
