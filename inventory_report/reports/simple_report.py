@@ -18,7 +18,6 @@ class SimpleReport:
             if list_company.count(company) > bigger_stock:
                 bigger_stock = list_company.count(company)
                 name_company = company
-        print(name_company)
 
         sentence1 = f"Data de fabricação mais antiga: {min(manufacturing)}"
         sentence2 = f"Data de validade mais próxima: {min(expiration)}"

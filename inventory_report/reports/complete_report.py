@@ -11,6 +11,4 @@ class CompleteReport(SimpleReport):
             result += f"- {key}: {value}\n"
         simple_report = SimpleReport.generate(arr)
 
-        print(result)
-
         return f"{simple_report}\n{result}"
