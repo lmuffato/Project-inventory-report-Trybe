@@ -23,3 +23,6 @@ class InventoryRefactor(Iterable):
         dic_list = self.importer.import_data(path)
         self.data.extend(dic_list)
         return self.generate(report_type, self.data)
+
+
+# É isso, acabou rei, tamo junto
