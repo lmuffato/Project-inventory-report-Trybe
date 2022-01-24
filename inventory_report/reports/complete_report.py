@@ -11,6 +11,6 @@ class CompleteReport(SimpleReport):
         string = "\nProdutos estocados por empresa: \n"
 
         for gokuSsj2, vegetaSsj2 in enterprises.items():
-            string += f"- { gokuSsj2 }: { vegetaSsj2 }\n"
+            string += f"- { gokuSsj2 }: { int(vegetaSsj2 // 6) }\n"
 
         return simple_report + string

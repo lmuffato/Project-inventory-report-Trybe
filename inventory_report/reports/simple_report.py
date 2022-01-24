@@ -3,7 +3,7 @@ from datetime import datetime
 
 class SimpleReport:
     def generate(products):
-        current_date = datetime.today().strftime("%Y-%M-%D")
+        current_date = datetime.today().strftime("%Y-%m-%d")
         oldest_date = products[0]["data_de_fabricacao"]
         vality_date = []
         industries = []
