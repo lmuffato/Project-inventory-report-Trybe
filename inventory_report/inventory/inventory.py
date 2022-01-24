@@ -13,16 +13,16 @@ class Inventory:
             return result_data
 
     def import_json(file_path):
-        with open(file_path, 'r') as file:
+        with open(file_path, "r") as file:
             return json.load(file)
 
     def import_xml(file_path):
-        with open(file_path, 'r') as file:
+        with open(file_path, "r") as file:
             tree = ET.parse(file)
             root = tree.getroot()
             result_data = [
                 {el.tag: el.text for el in record}
-                for record in root.findall('record')
+                for record in root.findall("record")
             ]
             return result_data
 

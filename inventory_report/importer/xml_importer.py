@@ -4,7 +4,7 @@ from inventory_report.importer.importer import Importer
 
 class XmlImporter(Importer):
     def import_data(import_file):
-        with open(import_file, 'r') as file:
+        with open(import_file, "r") as file:
             if not import_file.endswith(".xml"):
                 raise ValueError("Arquivo inválido")
 
@@ -12,6 +12,6 @@ class XmlImporter(Importer):
             root = tree.getroot()
             result_data = [
                 {el.tag: el.text for el in record}
-                for record in root.findall('record')
+                for record in root.findall("record")
             ]
             return result_data
